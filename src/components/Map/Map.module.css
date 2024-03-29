@@ -1,0 +1,7 @@
+.map {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  width: 99%;
+  height: 91%;
+}

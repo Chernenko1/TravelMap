@@ -1,7 +1,6 @@
 .map {
   display: flex;
   justify-content: center;
-  position: absolute;
-  width: 99%;
+  position: relative;
   height: 91%;
 }

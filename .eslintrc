@@ -9,6 +9,7 @@
     "lint:css:fix": "npm run lint:css -- --fix",
   },
   "rules": {
+    "no-unused-vars": "error",
     "prettier/prettier": 2,
     "import/order": [
       2,

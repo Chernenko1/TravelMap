@@ -1,8 +1,12 @@
-import { LatLngExpression } from 'leaflet'
 import { useEffect, useState } from 'react'
 
+interface IGeolocation {
+  lat: number
+  lng: number
+}
+
 export const useGeolocation = () => {
-  const [location, setLocation] = useState<LatLngExpression | undefined>(undefined)
+  const [location, setLocation] = useState<IGeolocation | undefined>(undefined)
 
   useEffect(() => {
     getUserLocation()

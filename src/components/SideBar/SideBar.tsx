@@ -2,7 +2,7 @@ import styles from './SideBar.module.css'
 import AppIcon from '@assets/svg/AppIcon.svg'
 import { useState } from 'react'
 import { IoSearch, IoBookmarkSharp, IoManSharp } from 'react-icons/io5'
-import { SidebarMenu } from './SideBarMenu'
+import { SidebarMenu } from './SideBarPanel'
 import { SearchMenu } from './SidebarMenus/SearchMenu'
 
 export const SideBar = () => {

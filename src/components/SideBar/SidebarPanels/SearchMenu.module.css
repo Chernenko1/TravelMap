@@ -1,0 +1,56 @@
+h3 {
+  font-family: 'MontBold';
+  font-size: 20px;
+}
+
+.searchMenu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 5px;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.inputSearch {
+  width: 350px;
+}
+
+.inputRadiusContainer {
+  display: flex;
+  column-gap: 10px;
+}
+.inputRadius {
+  width: 100px;
+}
+
+.inputRadiusContainer > p {
+  font-family: 'MontBold';
+  font-size: 15px;
+}
+
+.categoriesContainer {
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+  cursor: pointer;
+}
+
+.categoriesContainer:hover > p {
+  color: rgb(155, 155, 155);
+}
+
+.categoriesContainer > p {
+  font-family: 'MontRegular';
+  font-size: 14px;
+}
+
+.settingsContainer {
+  width: 350px;
+}
+
+.icons {
+  width: 30px;
+  height: 30px;
+}

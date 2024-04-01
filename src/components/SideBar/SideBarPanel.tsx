@@ -1,5 +1,5 @@
 import React from 'react'
-import styles from './SideBarMenu.module.css'
+import styles from './SideBarPanel.module.css'
 
 interface ISideBarMenu {
   isOpen: boolean
@@ -8,7 +8,7 @@ interface ISideBarMenu {
 
 export const SidebarMenu = ({ isOpen, component }: ISideBarMenu) => {
   if (isOpen) {
-    return <div className={styles.sideBerMenu}>{component}</div>
+    return <div className={styles.sideBarMenu}>{component}</div>
   }
   // false && <div className={styles.sideBerMenu}>1</div>
   // return <div className={styles.sideBerMenu}>{children}</div>

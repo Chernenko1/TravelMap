@@ -4,6 +4,7 @@ import { SEARCH_CATEGORIES } from '@constants/SEARCH_CATEGORIES'
 
 import styles from './SearchMenu.module.css'
 import { SearchButton } from '@components/SearchButton/SearchButton'
+import { Categories } from './Categories/Categories'
 
 export const SearchMenu = () => {
   return (
@@ -15,14 +16,7 @@ export const SearchMenu = () => {
         <div className={styles.settingsContainer}>
           <h3>Искать: </h3>
           <ScrollMenu>
-            {SEARCH_CATEGORIES.map(({ title, icon }) => {
-              return (
-                <div className={styles.categoriesContainer}>
-                  <img src={icon} className={styles.icons} />
-                  <p>{title}</p>
-                </div>
-              )
-            })}
+            <Categories />
           </ScrollMenu>
           <h3>В радиусе:</h3>
           <div className={styles.inputRadiusContainer}>

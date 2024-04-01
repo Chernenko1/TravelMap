@@ -1,0 +1,20 @@
+.categoriesContainer {
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+  cursor: pointer;
+}
+
+.categoriesContainer:hover > p {
+  color: rgb(155, 155, 155);
+}
+
+.categoriesContainer > p {
+  font-family: 'MontRegular';
+  font-size: 14px;
+}
+
+.icons {
+  width: 30px;
+  height: 30px;
+}

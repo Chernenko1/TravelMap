@@ -1,13 +1,15 @@
-import { Header } from '@components/Header/Header'
 import './App.css'
 import { BrowserRouter, Routes } from 'react-router-dom'
 import { Map } from '@components/Map/Map'
+import { SideBar } from '@components/SideBar/SideBar'
 
 function App() {
   return (
     <BrowserRouter>
-      <Header />
-      <Map />
+      <div style={{ display: 'flex' }}>
+        <SideBar />
+        <Map />
+      </div>
       <Routes></Routes>
     </BrowserRouter>
   )

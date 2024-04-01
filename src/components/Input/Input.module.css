@@ -1,0 +1,28 @@
+.input {
+  width: 100%;
+  /* margin: 5px 10px; */
+  padding: 10px 0px 10px 40px;
+  border-radius: 5px;
+  border: none;
+  outline: 3px solid rgb(211, 209, 209);
+  font-family: 'MontLight';
+  font-weight: 600;
+  font-size: 16px;
+  color: rgb(162, 160, 160);
+  box-sizing: border-box;
+}
+
+.input:focus {
+  border: none;
+  outline: 3px solid rgb(162, 160, 160);
+}
+
+.inputContainer {
+  position: relative;
+}
+
+.icon {
+  position: absolute;
+  top: 11px;
+  left: 10px;
+}

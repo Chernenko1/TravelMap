@@ -1,0 +1,27 @@
+.scrollMenu {
+  width: 100%;
+  padding: 5px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  word-wrap: break-word;
+  scroll-behavior: smooth;
+  border: solid;
+  border-width: 3px;
+  border-color: rgb(211, 209, 209);
+  border-radius: 10px;
+  box-sizing: border-box;
+  height: 490px;
+}
+.scrollContainer::-webkit-scrollbar {
+  width: 8px;
+}
+
+.scrollContainer::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.scrollContainer::-webkit-scrollbar-thumb {
+  background-color: rgba(155, 155, 155, 0.7);
+  border-radius: 20px;
+  border: transparent;
+}

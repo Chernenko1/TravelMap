@@ -3,7 +3,7 @@ import AppIcon from '@assets/svg/AppIcon.svg'
 import { useState } from 'react'
 import { IoSearch, IoBookmarkSharp, IoManSharp } from 'react-icons/io5'
 import { SidebarMenu } from './SideBarPanel'
-import { SearchMenu } from './SidebarMenus/SearchMenu'
+import { SearchMenu } from './SidebarPanels/SearchMenu'
 
 export const SideBar = () => {
   const [openSearchMenu, setOpenSearchMenu] = useState<boolean>(false)

@@ -11,7 +11,7 @@ interface Feature {
 
 interface Properties {
   name: string
-  rate: number
+  distance: number
   osm_type: string
   osm_id: string
   extent: number[]
@@ -22,6 +22,7 @@ interface Properties {
   district: string
   street: string
   housenumber: string
+  address_line2: string
 }
 
 interface Geometry {

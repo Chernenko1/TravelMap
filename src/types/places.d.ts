@@ -12,8 +12,7 @@ interface Feature {
 interface Properties {
   name: string
   distance: number
-  osm_type: string
-  osm_id: string
+  categories: string[]
   extent: number[]
   country: string
   state: string

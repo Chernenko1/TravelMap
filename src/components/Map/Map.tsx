@@ -4,6 +4,9 @@ import { getPlaces } from '@utils/getPlaces'
 import { useEffect, useState } from 'react'
 import { MarkerDescription } from './MarkerDescription/MarkerDescription'
 import { useAppSelector } from '@store/hooks'
+import { MapIcon } from '@components/MapIcons/Icons'
+import Culture from '@assets/svg/culture.svg'
+import { Icon } from 'leaflet'
 
 export const Map = () => {
   const [features, setFeatures] = useState<Feature[] | undefined>(undefined)
@@ -18,6 +21,23 @@ export const Map = () => {
     searchPlace()
   }, [userCoords, radius, searchPlaces])
 
+  const entertainment = new Icon({
+    iconUrl: Culture,
+    iconSize: [35, 35],
+    iconAnchor: undefined,
+    popupAnchor: [-3, -76],
+  })
+
+  function setIcon(arr: string[]) {
+    for (var i = 0; i < MapIcon.length; i++) {
+      let strArr = MapIcon[i].value.split(',')
+      if (strArr.some((item) => arr.includes(item))) {
+        return MapIcon[i].icon
+      }
+    }
+    return entertainment
+  }
+
   if (userCoords) {
     return (
       <MapContainer zoomControl={false} center={userCoords} zoom={13} style={{ height: '98vh', width: '100%' }}>
@@ -30,17 +50,24 @@ export const Map = () => {
           <Popup>Жопа</Popup>
         </Marker>
         {features &&
-          features.map((item, ind) => (
-            <Marker position={{ lat: item.geometry.coordinates[1], lng: item.geometry.coordinates[0] }} key={ind}>
-              <Popup>
-                <MarkerDescription
-                  name={item.properties.name}
-                  address_line={item.properties.address_line2}
-                  distance={item.properties.distance}
-                />
-              </Popup>
-            </Marker>
-          ))}
+          features.map((item, ind) => {
+            let icon = setIcon(item.properties.categories)
+            return (
+              <Marker
+                position={{ lat: item.geometry.coordinates[1], lng: item.geometry.coordinates[0] }}
+                icon={icon}
+                key={ind}
+              >
+                <Popup>
+                  <MarkerDescription
+                    name={item.properties.name}
+                    address_line={item.properties.address_line2}
+                    distance={item.properties.distance}
+                  />
+                </Popup>
+              </Marker>
+            )
+          })}
       </MapContainer>
     )
   }

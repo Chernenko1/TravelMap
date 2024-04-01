@@ -1,6 +1,5 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { RootState } from '@store/store'
-import { getPlaces } from '@utils/getPlaces'
 
 interface ISearch {
   searchPlaces: string[]
@@ -17,10 +16,17 @@ const initialState: ISearch = {
 export const searchSlice = createSlice({
   name: 'search',
   initialState,
-  reducers: {},
+  reducers: {
+    setSearchPlace: (state, actions: PayloadAction<string[]>) => {
+      state.searchPlaces = actions.payload
+    },
+    setRadius: (state, actions) => {
+      state.radius = actions.payload
+    },
+  },
 })
 
-export const {} = searchSlice.actions
+export const { setSearchPlace, setRadius } = searchSlice.actions
 
 export const selectCount = (state: RootState) => state.search
 

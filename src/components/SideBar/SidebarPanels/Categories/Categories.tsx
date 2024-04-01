@@ -1,14 +1,27 @@
+import { useAppDispatch, useAppSelector } from '@store/hooks'
 import styles from './Categories.module.css'
 import { SEARCH_CATEGORIES } from '@constants/SEARCH_CATEGORIES'
+import { useState } from 'react'
 
-export const Categories = () => {
+interface ICategories {
+  places: string[]
+  handleChange: (value: string) => void
+}
+
+export const Categories = ({ places, handleChange }: ICategories) => {
   return (
     <>
-      {SEARCH_CATEGORIES.map(({ title, icon }) => {
+      {SEARCH_CATEGORIES.map(({ title, icon, value }) => {
         return (
-          <div className={styles.categoriesContainer} key={title}>
-            <img src={icon} className={styles.icons} />
-            <p>{title}</p>
+          <div
+            className={!places.includes(value) ? styles.lightContainer : ''}
+            onClick={() => handleChange(value)}
+            key={title}
+          >
+            <div className={styles.categoriesContainer}>
+              <img src={icon} className={styles.icons} />
+              <p>{title}</p>
+            </div>
           </div>
         )
       })}

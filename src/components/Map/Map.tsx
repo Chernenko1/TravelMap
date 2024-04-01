@@ -1,42 +1,37 @@
-import styles from './Map.module.css'
 import { Circle, MapContainer, Marker, Popup, TileLayer } from 'react-leaflet'
 import 'leaflet/dist/leaflet.css'
-import L, { Icon } from 'leaflet'
-import { useGeolocation } from '../../hooks/useGeolocation'
 import { getPlaces } from '@utils/getPlaces'
 import { useEffect, useState } from 'react'
 import { MarkerDescription } from './MarkerDescription/MarkerDescription'
-import { SideBar } from '@components/SideBar/SideBar'
+import { useAppSelector } from '@store/hooks'
 
 export const Map = () => {
   const [features, setFeatures] = useState<Feature[] | undefined>(undefined)
-  const coords = useGeolocation()
+  const { userCoords, radius, searchPlaces } = useAppSelector((state) => state.search)
 
-  console.log(coords)
-
-  async function searchPlaces() {
-    let response = await getPlaces(coords?.lat as number, coords?.lng as number, 1000)
+  async function searchPlace() {
+    let response = await getPlaces(userCoords?.lat as number, userCoords?.lng as number, +radius, searchPlaces)
     setFeatures(response)
   }
 
   useEffect(() => {
-    searchPlaces()
-  }, [coords])
+    searchPlace()
+  }, [userCoords, radius, searchPlaces])
 
-  if (coords) {
+  if (userCoords) {
     return (
-      <MapContainer zoomControl={false} center={coords} zoom={13} style={{ height: '98vh', width: '100%' }}>
+      <MapContainer zoomControl={false} center={userCoords} zoom={13} style={{ height: '98vh', width: '100%' }}>
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
         />
-        <Circle center={coords} radius={1000} />
-        <Marker position={coords}>
+        <Circle center={userCoords} radius={+radius} />
+        <Marker position={userCoords}>
           <Popup>Жопа</Popup>
         </Marker>
         {features &&
-          features.map((item) => (
-            <Marker position={{ lat: item.geometry.coordinates[1], lng: item.geometry.coordinates[0] }}>
+          features.map((item, ind) => (
+            <Marker position={{ lat: item.geometry.coordinates[1], lng: item.geometry.coordinates[0] }} key={ind}>
               <Popup>
                 <MarkerDescription
                   name={item.properties.name}

@@ -1,0 +1,29 @@
+* {
+  cursor: pointer;
+}
+
+.categoriesContainer {
+  position: relative;
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+  z-index: -1;
+}
+
+.categoriesContainer:hover > p {
+  color: rgb(155, 155, 155);
+}
+
+.categoriesContainer > p {
+  font-family: 'MontRegular';
+  font-size: 14px;
+}
+
+.icons {
+  width: 30px;
+  height: 30px;
+}
+
+.lightContainer {
+  background-color: rgba(255, 255, 255, 0.5);
+}

@@ -1,4 +1,5 @@
-import { ErrorMessage, Field, Form, FormikErrors, FormikProps, withFormik } from 'formik'
+import { Field, Form, FormikErrors, FormikProps, withFormik } from 'formik'
+import { signUp } from '@utils/singUp'
 
 import styles from './Form.module.css'
 
@@ -87,6 +88,6 @@ export const RegistrationForm = withFormik<IFormProps, RegValues>({
   },
 
   handleSubmit: (values) => {
-    console.log(values)
+    signUp(values.email, values.password)
   },
 })(InnerForm)

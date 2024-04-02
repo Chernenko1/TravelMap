@@ -22,6 +22,13 @@ interface Properties {
   street: string
   housenumber: string
   address_line2: string
+  datasource: {
+    raw: {
+      name: string
+      landuse: string
+      natural: string
+    }
+  }
 }
 
 interface Geometry {

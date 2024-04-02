@@ -5,8 +5,6 @@ import { useEffect, useState } from 'react'
 import { MarkerDescription } from './MarkerDescription/MarkerDescription'
 import { useAppSelector } from '@store/hooks'
 import { MapIcon } from '@components/MapIcons/Icons'
-import Culture from '@assets/svg/culture.svg'
-import { Icon } from 'leaflet'
 
 export const Map = () => {
   const [features, setFeatures] = useState<Feature[] | undefined>(undefined)
@@ -21,13 +19,6 @@ export const Map = () => {
     searchPlace()
   }, [userCoords, radius, searchPlaces])
 
-  const entertainment = new Icon({
-    iconUrl: Culture,
-    iconSize: [35, 35],
-    iconAnchor: undefined,
-    popupAnchor: [-3, -76],
-  })
-
   function setIcon(arr: string[]) {
     for (var i = 0; i < MapIcon.length; i++) {
       let strArr = MapIcon[i].value.split(',')
@@ -35,7 +26,7 @@ export const Map = () => {
         return MapIcon[i].icon
       }
     }
-    return entertainment
+    return MapIcon.at(-1)?.icon
   }
 
   if (userCoords) {

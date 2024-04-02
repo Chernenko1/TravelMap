@@ -17,6 +17,7 @@ import Religion from '@assets/svg/religion.svg'
 import History from '@assets/svg/history.svg'
 import Adults from '@assets/svg/18+.svg'
 import Culture from '@assets/svg/culture.svg'
+import unNamed from '@assets/svg/unNamed.svg'
 
 const entertainment = new Icon({
   iconUrl: Entertainment,
@@ -144,6 +145,13 @@ const culture = new Icon({
   popupAnchor: [-3, -76],
 })
 
+const unknown = new Icon({
+  iconUrl: unNamed,
+  iconSize: [35, 35],
+  iconAnchor: undefined,
+  popupAnchor: [-3, -76],
+})
+
 export const MapIcon = [
   {
     icon: entertainment,
@@ -219,5 +227,9 @@ export const MapIcon = [
   {
     icon: bike,
     value: 'rental.bicycle',
+  },
+  {
+    icon: unknown,
+    value: '',
   },
 ]

@@ -12,6 +12,7 @@
   "dependencies": {
     "@reduxjs/toolkit": "^2.2.2",
     "axios": "^1.6.8",
+    "firebase": "^10.10.0",
     "formik": "^2.4.5",
     "install": "^0.13.0",
     "leaflet": "^1.9.4",

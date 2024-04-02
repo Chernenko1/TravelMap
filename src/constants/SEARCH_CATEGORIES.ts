@@ -78,8 +78,7 @@ export const SEARCH_CATEGORIES: { title: string; value: string; icon: string }[]
   {
     icon: Entertainment,
     title: 'Развлечения',
-    value: `entertainment.zoo,entertainment.aquarium,entertainment.planetarium,entertainment.cinema,amusement_arcade,entertainment.escape_game,
-      entertainment.miniature_golf,entertainment.bowling_alley,flying_fox,entertainment.water_park,entertainment.theme_park`,
+    value: `entertainment.zoo,entertainment.aquarium,entertainment.planetarium,entertainment.cinema,entertainment.escape_game,entertainment.miniature_golf,entertainment.bowling_alley,entertainment.water_park,entertainment.theme_park`,
   },
   {
     icon: Other,

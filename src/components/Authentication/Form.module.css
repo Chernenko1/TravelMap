@@ -57,6 +57,7 @@
   position: relative;
   max-width: max-content;
   padding: 0px 15px;
-  top: -88px;
+  /* margin-top: 10px; */
+  top: 10px;
   left: 30px;
 }

@@ -1,6 +1,6 @@
 import { Field, Form, FormikErrors, FormikProps, withFormik } from 'formik'
 
-import styles from './Login.module.css'
+import styles from './Form.module.css'
 
 interface LoginValues {
   email: string
@@ -24,6 +24,7 @@ const InnerForm = (props: OtherProps & FormikProps<LoginValues>) => {
       <h1 className={styles.headerTitle}>{message}</h1>
       <div className={styles.formContainer}>
         <div>
+          {touched.email && errors.email && <div className={styles.error}>{errors.email}</div>}
           <Field
             type='email'
             name='email'
@@ -31,7 +32,6 @@ const InnerForm = (props: OtherProps & FormikProps<LoginValues>) => {
             style={{ borderColor: touched.email && errors.email && 'red' }}
             placeholder='Почта'
           />
-          {touched.email && errors.email && <div className={styles.error}>{errors.email}</div>}
         </div>
 
         <div>

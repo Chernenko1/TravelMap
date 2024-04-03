@@ -15,7 +15,7 @@ export const Authentication = () => {
   return (
     <div className={styles.authWrapper}>
       <div className={styles.authContainer}>
-        <RegistrationForm message='Регистрация' />
+        <LoginForm message='Регистрация' />
       </div>
       <div className={styles.authImg}>
         <img src={AuthImage} />

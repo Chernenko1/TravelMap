@@ -1,6 +1,7 @@
 import { Field, Form, FormikErrors, FormikProps, withFormik } from 'formik'
 
 import styles from './Form.module.css'
+import { signIn } from '@utils/signIn'
 
 interface LoginValues {
   email: string
@@ -58,13 +59,18 @@ export const LoginForm = withFormik<IFormProps, LoginValues>({
     let errors: FormikErrors<LoginValues> = {}
     if (!values.email) {
       errors.email = 'Поле не может быть пустым'
-    } else if (!isValidEmail(values.email)) {
+    } else if (!values.email) {
       errors.email = 'Invalid email address'
     }
     return errors
   },
 
   handleSubmit: (values) => {
-    console.log(values)
+    console.log(1)
+    try {
+      console.log(signIn(values.email, values.password))
+    } catch (error) {
+      console.log(error)
+    }
   },
 })(InnerForm)

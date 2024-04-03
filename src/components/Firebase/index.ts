@@ -1,6 +1,7 @@
 import { initializeApp } from 'firebase/app'
 import { env } from '@constants/index'
 import { getAnalytics } from 'firebase/analytics'
+import firebase from 'firebase/compat/app'
 
 const firebaseConfig = {
   apiKey: env.VITE_FIREBASE_API_KEY,
@@ -15,4 +16,4 @@ const firebaseConfig = {
 const FireBaseApp = initializeApp(firebaseConfig)
 const analytics = getAnalytics(FireBaseApp)
 
-export default FireBaseApp
+export const firebase_app = initializeApp(firebaseConfig)

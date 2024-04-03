@@ -3,6 +3,7 @@ import { signUp } from '@utils/singUp'
 
 import styles from '@components/Authentication/Form.module.css'
 import { Authentication } from '@components/Authentication/Authentication'
+import { Link } from 'react-router-dom'
 
 interface RegValues {
   login: string
@@ -62,6 +63,13 @@ const InnerForm = (props: OtherProps & FormikProps<RegValues>) => {
         <button type='submit' disabled={isSubmitting} className={styles.button}>
           Войти
         </button>
+
+        <div className={styles.newUser}>
+          <p>Уже есть аккаунт?</p>
+          <Link to={'/login'}>
+            <p>Вход</p>
+          </Link>
+        </div>
       </Form>
     </Authentication>
   )

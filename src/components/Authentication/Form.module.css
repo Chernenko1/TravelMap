@@ -1,5 +1,6 @@
 .formContainer,
-.loginForm {
+.loginForm,
+.newUser {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -7,7 +8,8 @@
 
 .form,
 .button,
-.error {
+.error,
+.newUser {
   font-family: 'MontRegular';
 }
 
@@ -60,4 +62,17 @@
   /* margin-top: 10px; */
   top: 10px;
   left: 30px;
+}
+
+.newUser {
+  flex-direction: row;
+  column-gap: 10px;
+}
+
+.newUser > a {
+  text-decoration: none;
+}
+
+.newUser:hover > a {
+  color: red;
 }

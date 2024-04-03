@@ -44,16 +44,16 @@ const InnerForm = (props: OtherProps & FormikProps<LoginValues>) => {
           </div>
         </div>
 
-        <div>
-          <p>Нет аккаунта?</p>
-          <Link to={'/login'}>
-            <p>Создать аккаунт</p>
-          </Link>
-        </div>
-
         <button type='submit' disabled={isSubmitting} className={styles.button}>
           Войти
         </button>
+
+        <div className={styles.newUser}>
+          <p>Нет аккаунта?</p>
+          <Link to={'/registration'}>
+            <p>Создать аккаунт</p>
+          </Link>
+        </div>
       </Form>
     </Authentication>
   )

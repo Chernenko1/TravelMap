@@ -1,13 +1,26 @@
 import styles from './SideBar.module.css'
 import AppIcon from '@assets/svg/AppIcon.svg'
 import { useState } from 'react'
-import { IoSearch, IoBookmarkSharp, IoManSharp } from 'react-icons/io5'
+import { IoSearch, IoBookmarkSharp, IoManSharp, IoExit, IoEnter } from 'react-icons/io5'
 import { SidebarMenu } from './SideBarPanel'
 import { SearchMenu } from './SidebarPanels/SearchMenu'
 import { SideBarButton } from '@components/SideBarButton/SideBarButton'
+import { useAuth } from '@hooks/useAuth'
+import { useNavigate } from 'react-router-dom'
+import { useAppDispatch } from '@store/hooks'
+import { removeUser } from '@store/actions/userSlice'
 
 export const SideBar = () => {
   const [openSearchMenu, setOpenSearchMenu] = useState<boolean>(false)
+
+  const navigate = useNavigate()
+  const { isAuth } = useAuth()
+
+  const dispatch = useAppDispatch()
+
+  function handleProfileButton() {
+    isAuth ? dispatch(removeUser()) : navigate('/login')
+  }
 
   return (
     <div style={{ display: 'flex' }}>
@@ -27,8 +40,13 @@ export const SideBar = () => {
           </div>
         </section>
         <section className={styles.profileContainer}>
-          <SideBarButton title='prof' type='button'>
-            <IoManSharp size={24} color='green' />
+          <SideBarButton
+            title='prof'
+            type='button'
+            style={{ backgroundColor: '#32CD32' }}
+            onClick={handleProfileButton}
+          >
+            {isAuth ? <IoExit size={24} /> : <IoEnter size={24} />}
           </SideBarButton>
         </section>
       </header>

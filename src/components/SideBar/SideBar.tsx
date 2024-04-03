@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { IoSearch, IoBookmarkSharp, IoManSharp } from 'react-icons/io5'
 import { SidebarMenu } from './SideBarPanel'
 import { SearchMenu } from './SidebarPanels/SearchMenu'
+import { SideBarButton } from '@components/SideBarButton/SideBarButton'
 
 export const SideBar = () => {
   const [openSearchMenu, setOpenSearchMenu] = useState<boolean>(false)
@@ -11,25 +12,24 @@ export const SideBar = () => {
   return (
     <div style={{ display: 'flex' }}>
       <header className={styles.sideBar}>
-        <section className={styles.buttons}>
+        <section className={styles.upContainer}>
           <div className={styles.appLogo}>
             <img src={AppIcon} title='appLogo' />
           </div>
-          <div>
-            <button className={styles.searchButton}>
-              <IoSearch size={20} color='blue' />
-            </button>
-          </div>
-          <div>
-            <button className={styles.markButton}>
-              <IoBookmarkSharp size={20} color='pink' />
-            </button>
+          <div className={styles.upButtons}>
+            <SideBarButton color='#5E7BC7' type='button' style={{ backgroundColor: '#5E7BC7' }} title='search'>
+              <IoSearch size={24} />
+            </SideBarButton>
+
+            <SideBarButton color='#C75E5E' type='button' style={{ backgroundColor: '#C75E5E' }} title='mark'>
+              <IoBookmarkSharp size={20} />
+            </SideBarButton>
           </div>
         </section>
         <section className={styles.profileContainer}>
-          <button className={styles.markButton}>
-            <IoManSharp size={20} color='green' />
-          </button>
+          <SideBarButton title='prof' type='button'>
+            <IoManSharp size={24} color='green' />
+          </SideBarButton>
         </section>
       </header>
       <SidebarMenu isOpen={true} component={<SearchMenu />} />

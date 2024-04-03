@@ -12,8 +12,7 @@ interface Feature {
 interface Properties {
   name: string
   distance: number
-  osm_type: string
-  osm_id: string
+  categories: string[]
   extent: number[]
   country: string
   state: string
@@ -23,6 +22,13 @@ interface Properties {
   street: string
   housenumber: string
   address_line2: string
+  datasource: {
+    raw: {
+      name: string
+      landuse: string
+      natural: string
+    }
+  }
 }
 
 interface Geometry {

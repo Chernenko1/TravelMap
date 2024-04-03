@@ -17,7 +17,7 @@ export const Input = ({ ...inputRest }: IInput) => {
   return (
     <div className={styles.inputContainer}>
       <IoSearch className={styles.icon} size={20} color='gray' />
-      <input className={styles.input} type='text' value={value} onChange={handleInputChange} />
+      <input className={styles.input} type='text' value={value} onChange={handleInputChange} {...inputRest} />
     </div>
   )
 }

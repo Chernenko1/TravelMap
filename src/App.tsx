@@ -1,16 +1,18 @@
+import '@components/Firebase/index'
+import { LoginForm } from '@pages/Login/LoginForm'
+import { MainPage } from '@pages/Main/MainPage'
+import { RegistrationForm } from '@pages/Registration/RegistrationFrom'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import './App.css'
-import { BrowserRouter, Routes } from 'react-router-dom'
-import { Map } from '@components/Map/Map'
-import { SideBar } from '@components/SideBar/SideBar'
 
 function App() {
   return (
     <BrowserRouter>
-      <div style={{ display: 'flex' }}>
-        <SideBar />
-        <Map />
-      </div>
-      <Routes></Routes>
+      <Routes>
+        <Route path='/' element={<MainPage />} />
+        <Route path='/login' element={<LoginForm message='Вход' />} />
+        <Route path='/registration' element={<RegistrationForm message='Регистрация' />} />
+      </Routes>
     </BrowserRouter>
   )
 }

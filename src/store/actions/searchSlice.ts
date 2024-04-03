@@ -28,6 +28,6 @@ export const searchSlice = createSlice({
 
 export const { setSearchPlace, setRadius } = searchSlice.actions
 
-export const selectCount = (state: RootState) => state.search
+export const search = (state: RootState) => state.search
 
 export default searchSlice.reducer

@@ -1,5 +1,6 @@
 .formContainer,
-.loginForm {
+.loginForm,
+.newUser {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -7,7 +8,9 @@
 
 .form,
 .button,
-.error {
+.errorInForm,
+.resError,
+.newUser {
   font-family: 'MontRegular';
 }
 
@@ -51,7 +54,7 @@
   border: solid 3px #808080;
 }
 
-.error {
+.errorInForm {
   color: red;
   background-color: white;
   position: relative;
@@ -60,4 +63,21 @@
   /* margin-top: 10px; */
   top: 10px;
   left: 30px;
+}
+
+.resError {
+  color: red;
+}
+
+.newUser {
+  flex-direction: row;
+  column-gap: 10px;
+}
+
+.newUser > a {
+  text-decoration: none;
+}
+
+.newUser:hover > a {
+  color: red;
 }

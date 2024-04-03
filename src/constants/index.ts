@@ -1,0 +1,11 @@
+export const env = {
+  VITE_FIREBASE_API_KEY: import.meta.env.VITE_FIREBASE_API_KEY,
+  VITE_AUTH_DOMAIN: import.meta.env.VITE_AUTH_DOMAIN,
+  VITE_PROJECT_ID: import.meta.env.VITE_PROJECT_ID,
+  VITE_STORAGE_BUCKET: import.meta.env.VITE_STORAGE_BUCKET,
+  VITE_MESSAGE_SENDER_ID: import.meta.env.VITE_MESSAGE_SENDER_ID,
+  VITE_APP_ID: import.meta.env.VITE_APP_ID,
+  VITE_MEASUREMENT_ID: import.meta.env.VITE_MEASUREMENT_ID,
+
+  VITE_GEO_API_KEY: import.meta.env.VITE_GEO_API_KEY,
+}

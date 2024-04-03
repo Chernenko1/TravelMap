@@ -1,0 +1,21 @@
+.authWrapper,
+.authWrapper,
+.authContainer {
+  display: flex;
+  align-items: center;
+}
+
+.authWrapper {
+  justify-content: space-evenly;
+  height: 98vh;
+  width: 100%;
+}
+
+.authContainer {
+  width: 50%;
+}
+
+.authImage {
+  margin: 0 auto;
+  width: 50%;
+}

@@ -1,0 +1,63 @@
+.formContainer,
+.loginForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form,
+.button,
+.error {
+  font-family: 'MontRegular';
+}
+
+.loginForm {
+  width: 100%;
+  row-gap: 50px;
+}
+
+.headerTitle {
+  font-family: 'MontBold';
+}
+
+.formContainer {
+  row-gap: 10px;
+}
+
+.form {
+  width: 360px;
+  height: 70px;
+  padding-left: 30px;
+  border-color: rgb(206, 206, 206);
+  border-width: 2px;
+  border-radius: 15px;
+  font-family: 'MontRegular';
+  font-size: 24px;
+}
+
+.button {
+  background-color: rgb(25, 62, 246);
+  font-size: 20px;
+  width: 360px;
+  height: 60px;
+  border-radius: 10px;
+}
+
+.button:hover {
+  background-color: rgba(25, 62, 246, 0.581);
+}
+
+.button:active {
+  border: solid 3px #808080;
+}
+
+.error {
+  color: red;
+  background-color: white;
+  position: relative;
+  max-width: max-content;
+  padding: 0px 15px;
+  /* margin-top: 10px; */
+  top: 10px;
+  left: 30px;
+}

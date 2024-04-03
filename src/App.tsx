@@ -1,16 +1,16 @@
 import './App.css'
-import { BrowserRouter, Routes } from 'react-router-dom'
-import { Map } from '@components/Map/Map'
-import { SideBar } from '@components/SideBar/SideBar'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { Authentication } from '@components/Authentication/Authentication'
+import { MainPage } from '@pages/MainPage'
+import '@components/Firebase/index'
 
 function App() {
   return (
     <BrowserRouter>
-      <div style={{ display: 'flex' }}>
-        <SideBar />
-        <Map />
-      </div>
-      <Routes></Routes>
+      <Routes>
+        <Route path='/' element={<Authentication />} />
+        <Route path='/auth' element={<Authentication />} />
+      </Routes>
     </BrowserRouter>
   )
 }

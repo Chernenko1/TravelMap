@@ -1,104 +1,95 @@
-import { Field, Form, FormikErrors, FormikProps, withFormik } from 'formik'
-import { signUp } from '@utils/singUp'
-
-import styles from '@components/Authentication/Form.module.css'
 import { Authentication } from '@components/Authentication/Authentication'
-import { Link } from 'react-router-dom'
+import styles from '@components/Authentication/Form.module.css'
+import { firebaseErrors } from '@constants/firebase'
+import { setUser } from '@store/actions/userSlice'
+import { useAppDispatch } from '@store/hooks'
+import { createUserWithEmailAndPassword, getAuth } from 'firebase/auth'
+import { Field, Form, Formik } from 'formik'
+import { useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+import * as Yup from 'yup'
 
 interface RegValues {
-  login: string
   email: string
   password: string
 }
 
-interface OtherProps {
-  message: string
+const SignInSchema = Yup.object().shape({
+  email: Yup.string().email('Некорректный адрес').required('Поле не может быть пустым'),
+  password: Yup.string().min(7, 'Минимум 8 символов').required('Поле не может быть пустым'),
+})
+
+const initialValues: RegValues = {
+  email: '',
+  password: '',
 }
 
-interface IFormProps {
-  initialEmail?: string
-  initialPassword?: string
-  message: string
-}
+type ErrorCodes = 'auth/too-many-requests' | 'auth/invalid-credential'
 
-const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/
+export const RegistrationForm = () => {
+  const [resError, setResError] = useState('')
 
-const InnerForm = (props: OtherProps & FormikProps<RegValues>) => {
-  const { touched, errors, isSubmitting, message } = props
+  const navigate = useNavigate()
+  const dispatch = useAppDispatch()
+
+  function handleSubmit(values: RegValues) {
+    setResError('')
+    const auth = getAuth()
+    createUserWithEmailAndPassword(auth, values.email, values.password)
+      .then(({ user }) => {
+        dispatch(setUser({ id: user.uid, email: user.email }))
+        navigate('/')
+      })
+      .catch(({ code }: { code: ErrorCodes }) => {
+        console.log(code)
+        setResError(firebaseErrors[code])
+      })
+  }
 
   return (
-    <Authentication>
-      <Form className={styles.loginForm}>
-        <h1 className={styles.headerTitle}>{message}</h1>
-        <div className={styles.formContainer}>
-          <div>
-            <Field type='text' name='login' className={styles.form} placeholder='Ваше имя' />
-          </div>
+    <Formik initialValues={initialValues} validationSchema={SignInSchema} onSubmit={handleSubmit}>
+      {({ errors, touched }) => (
+        <Authentication>
+          <Form className={styles.loginForm}>
+            <h1 className={styles.headerTitle}>Регистрация</h1>
+            <div className={styles.formContainer}>
+              <div>
+                {touched.email && errors.email && <div className={styles.errorInForm}>{errors.email}</div>}
+                <Field
+                  type='email'
+                  name='email'
+                  className={styles.form}
+                  style={{ borderColor: touched.email && errors.email && 'red' }}
+                  placeholder='Почта'
+                />
+              </div>
 
-          <div>
-            {touched.email && errors.email && <div className={styles.error}>{errors.email}</div>}
-            <Field
-              type='email'
-              name='email'
-              className={styles.form}
-              style={{ borderColor: touched.email && errors.email && 'red' }}
-              placeholder='Почта'
-            />
-          </div>
+              <div>
+                {touched.password && errors.password && <div className={styles.errorInForm}>{errors.password}</div>}
+                <Field
+                  type='password'
+                  name='password'
+                  className={styles.form}
+                  style={{ borderColor: touched.email && errors.email && 'red' }}
+                  placeholder='Пароль'
+                />
+              </div>
+              {resError && <div className={styles.resError}>{resError}</div>}
+            </div>
 
-          <div>
-            {touched.password && errors.password && <div className={styles.error}>{errors.password}</div>}
-            <Field
-              type='password'
-              name='password'
-              // pattern={`[${passwordPattern}]`}
-              title='Пароль должен быть длинной > 8 символов, содержать специальный символ и заглавную букву'
-              className={styles.form}
-              style={{ borderColor: touched.password && errors.password && 'red' }}
-              placeholder='Пароль'
-            />
-          </div>
-        </div>
+            <button type='submit' className={styles.button}>
+              Войти
+            </button>
 
-        <button type='submit' disabled={isSubmitting} className={styles.button}>
-          Войти
-        </button>
-
-        <div className={styles.newUser}>
-          <p>Уже есть аккаунт?</p>
-          <Link to={'/login'}>
-            <p>Вход</p>
-          </Link>
-        </div>
-      </Form>
-    </Authentication>
+            <div className={styles.newUser}>
+              <p>Уже есть аккаунт?</p>
+              <Link to={'/login'}>
+                <p>Войти</p>
+              </Link>
+            </div>
+          </Form>
+        </Authentication>
+      )}
+    </Formik>
   )
 }
-
-export const RegistrationForm = withFormik<IFormProps, RegValues>({
-  mapPropsToValues: (props) => {
-    return {
-      email: props.initialEmail || '',
-      login: '',
-      password: props.initialPassword || '',
-    }
-  },
-  validate: (values: RegValues) => {
-    let errors: FormikErrors<RegValues> = {}
-    if (!values.email) {
-      errors.email = 'Поле не может быть пустым'
-    } else if (!values.email) {
-      errors.email = 'Invalid email address'
-    }
-    if (!values.password) {
-      errors.password = 'Поле не может быть пустым'
-    } else if (!passwordPattern.test(values.password)) {
-      errors.password = 'Пароль не подходит'
-    }
-    return errors
-  },
-
-  handleSubmit: (values) => {
-    signUp(values.email, values.password)
-  },
-})(InnerForm)

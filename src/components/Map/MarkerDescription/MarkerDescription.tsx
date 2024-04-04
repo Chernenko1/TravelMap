@@ -1,6 +1,7 @@
-import { IoReturnUpForwardOutline } from 'react-icons/io5'
-import { IoHeartOutline } from 'react-icons/io5'
+import { IoReturnUpForwardOutline, IoHeartOutline } from 'react-icons/io5'
+import noImage from '@assets/images/noimage.png'
 import styles from './MarkerDescription.module.css'
+
 interface IMarkerDescription {
   name: string
   address_line: string
@@ -17,6 +18,10 @@ export const MarkerDescription = ({ name, address_line, distance }: IMarkerDescr
           <h3>{name}</h3>
           <IoHeartOutline size={iconSize} />
         </header>
+
+        <div className={styles.imageContainer}>
+          <img src={noImage} className={styles.image} />
+        </div>
 
         <p>{address_line}</p>
 

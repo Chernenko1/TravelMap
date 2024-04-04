@@ -5,5 +5,9 @@ interface IScrollMenu {
 }
 
 export const ScrollMenu = ({ children }: IScrollMenu) => {
-  return <div className={styles.scrollMenu}>{children}</div>
+  return (
+    <div className={styles.scrollContainer}>
+      <div className={styles.scrollMenu}>{children}</div>
+    </div>
+  )
 }

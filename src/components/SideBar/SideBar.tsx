@@ -9,9 +9,11 @@ import { useAuth } from '@hooks/useAuth'
 import { useNavigate } from 'react-router-dom'
 import { useAppDispatch } from '@store/hooks'
 import { removeUser } from '@store/actions/userSlice'
+import { FeaturesPanel } from './SidebarPanels/FeaturesPanel'
 
 export const SideBar = () => {
-  const [openSearchMenu, setOpenSearchMenu] = useState<boolean>(false)
+  const [isOpenSearchMenu, setIsOpenSearchMenu] = useState<boolean>(false)
+  const [isOpenFavouritePanel, setIsOpenFavouritePanel] = useState<boolean>(false)
 
   const navigate = useNavigate()
   const { isAuth } = useAuth()
@@ -22,6 +24,16 @@ export const SideBar = () => {
     isAuth ? dispatch(removeUser()) : navigate('/login')
   }
 
+  function openSerchMenu() {
+    setIsOpenFavouritePanel(false)
+    setIsOpenSearchMenu(!isOpenSearchMenu)
+  }
+
+  function openFavouritePanel() {
+    setIsOpenSearchMenu(false)
+    setIsOpenFavouritePanel(!isOpenFavouritePanel)
+  }
+
   return (
     <div style={{ display: 'flex' }}>
       <header className={styles.sideBar}>
@@ -30,11 +42,23 @@ export const SideBar = () => {
             <img src={AppIcon} title='appLogo' />
           </div>
           <div className={styles.upButtons}>
-            <SideBarButton color='#5E7BC7' type='button' style={{ backgroundColor: '#5E7BC7' }} title='search'>
+            <SideBarButton
+              color='#5E7BC7'
+              type='button'
+              style={{ backgroundColor: '#5E7BC7' }}
+              title='search'
+              onClick={openSerchMenu}
+            >
               <IoSearch size={24} />
             </SideBarButton>
 
-            <SideBarButton color='#C75E5E' type='button' style={{ backgroundColor: '#C75E5E' }} title='mark'>
+            <SideBarButton
+              color='#C75E5E'
+              type='button'
+              style={{ backgroundColor: '#C75E5E' }}
+              title='mark'
+              onClick={openFavouritePanel}
+            >
               <IoBookmarkSharp size={20} />
             </SideBarButton>
           </div>
@@ -50,7 +74,8 @@ export const SideBar = () => {
           </SideBarButton>
         </section>
       </header>
-      <SidebarMenu isOpen={true} component={<SearchMenu />} />
+      <SidebarMenu isOpen={isOpenSearchMenu} component={<SearchMenu />} />
+      <SidebarMenu isOpen={isOpenFavouritePanel} component={<FeaturesPanel />} />
     </div>
   )
 }

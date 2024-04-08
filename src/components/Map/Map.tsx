@@ -54,6 +54,7 @@ export const Map = () => {
                     name={item.properties.name || 'Нет названия'}
                     address_line={item.properties.address_line2}
                     distance={item.properties.distance}
+                    id={item.properties.place_id}
                   />
                 </Popup>
               </Marker>

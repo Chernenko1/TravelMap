@@ -1,6 +1,6 @@
 import { Input } from '@components/Input/Input'
-import styles from './FeaturesPanel.module.css'
-import { PanelCard } from '@components/FeaturesCards/PanelCard'
+import styles from './FavouritesPanel.module.css'
+import { PanelCard } from '@components/FavouriteCards/PanelCard'
 import { ScrollMenu } from '@components/ScrollMenu/ScrollMenu'
 
 export const FeaturesPanel = () => {

@@ -8,7 +8,7 @@ import { IoBookmarkSharp, IoEnter, IoExit, IoSearch } from 'react-icons/io5'
 import { useNavigate } from 'react-router-dom'
 import styles from './SideBar.module.css'
 import { SidebarMenu } from './SideBarPanel'
-import { FeaturesPanel } from './SidebarPanels/FeaturesPanel'
+import { FeaturesPanel } from './SidebarPanels/FavouritesPanel'
 import { SearchMenu } from './SidebarPanels/SearchMenu'
 
 export const SideBar = () => {

@@ -23,133 +23,133 @@ const entertainment = new Icon({
   iconUrl: Entertainment,
   iconSize: [35, 35],
   iconAnchor: undefined,
-  popupAnchor: [-3, -76],
+  popupAnchor: [0, -20],
 })
 
 const gas = new Icon({
   iconUrl: Gas,
   iconSize: [35, 35],
   iconAnchor: undefined,
-  popupAnchor: [-3, -76],
+  popupAnchor: [0, -20],
 })
 
 const shop = new Icon({
   iconUrl: Shops,
   iconSize: [35, 35],
   iconAnchor: undefined,
-  popupAnchor: [-3, -76],
+  popupAnchor: [0, -20],
 })
 
 const religion = new Icon({
   iconUrl: Religion,
   iconSize: [35, 35],
   iconAnchor: undefined,
-  popupAnchor: [-3, -76],
+  popupAnchor: [0, -20],
 })
 
 const accommodation = new Icon({
   iconUrl: Accommodation,
   iconSize: [35, 35],
   iconAnchor: undefined,
-  popupAnchor: [-3, -76],
+  popupAnchor: [0, -20],
 })
 
 const architecture = new Icon({
   iconUrl: Architecture,
   iconSize: [35, 35],
   iconAnchor: undefined,
-  popupAnchor: [-3, -76],
+  popupAnchor: [0, -20],
 })
 
 const history = new Icon({
   iconUrl: History,
   iconSize: [35, 35],
   iconAnchor: undefined,
-  popupAnchor: [-3, -76],
+  popupAnchor: [0, -20],
 })
 
 const sport = new Icon({
   iconUrl: Sport,
   iconSize: [35, 35],
   iconAnchor: undefined,
-  popupAnchor: [-3, -76],
+  popupAnchor: [0, -20],
 })
 
 const industrial = new Icon({
   iconUrl: Industrial,
   iconSize: [35, 35],
   iconAnchor: undefined,
-  popupAnchor: [-3, -76],
+  popupAnchor: [0, -20],
 })
 
 const nature = new Icon({
   iconUrl: Nature,
   iconSize: [35, 35],
   iconAnchor: undefined,
-  popupAnchor: [-3, -76],
+  popupAnchor: [0, -20],
 })
 
 const cars = new Icon({
   iconUrl: Cars,
   iconSize: [35, 35],
   iconAnchor: undefined,
-  popupAnchor: [-3, -76],
+  popupAnchor: [0, -20],
 })
 
 const bike = new Icon({
   iconUrl: Bike,
   iconSize: [35, 35],
   iconAnchor: undefined,
-  popupAnchor: [-3, -76],
+  popupAnchor: [0, -20],
 })
 
 const food = new Icon({
   iconUrl: Food,
   iconSize: [35, 35],
   iconAnchor: undefined,
-  popupAnchor: [-3, -76],
+  popupAnchor: [0, -20],
 })
 
 const cafe = new Icon({
   iconUrl: Cafe,
   iconSize: [35, 35],
   iconAnchor: undefined,
-  popupAnchor: [-3, -76],
+  popupAnchor: [0, -20],
 })
 
 const bank = new Icon({
   iconUrl: Banks,
   iconSize: [35, 35],
   iconAnchor: undefined,
-  popupAnchor: [-3, -76],
+  popupAnchor: [0, -20],
 })
 
 const other = new Icon({
   iconUrl: Other,
   iconSize: [35, 35],
   iconAnchor: undefined,
-  popupAnchor: [-3, -76],
+  popupAnchor: [0, -20],
 })
 
 const adult = new Icon({
   iconUrl: Adults,
   iconSize: [35, 35],
   iconAnchor: undefined,
-  popupAnchor: [-3, -76],
+  popupAnchor: [0, -20],
 })
 
 const culture = new Icon({
   iconUrl: Culture,
   iconSize: [35, 35],
   iconAnchor: undefined,
-  popupAnchor: [-3, -76],
+  popupAnchor: [0, -20],
 })
 
 const unknown = new Icon({
   iconUrl: unNamed,
   iconSize: [35, 35],
   iconAnchor: undefined,
-  popupAnchor: [-3, -76],
+  popupAnchor: [0, -20],
 })
 
 export const MapIcon = [

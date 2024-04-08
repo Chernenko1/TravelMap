@@ -17,5 +17,4 @@ const FireBaseApp = initializeApp(firebaseConfig)
 const analytics = getAnalytics(FireBaseApp)
 
 export const database = getFirestore(FireBaseApp)
-
-export default FireBaseApp
+export const firebase_app = initializeApp(firebaseConfig)

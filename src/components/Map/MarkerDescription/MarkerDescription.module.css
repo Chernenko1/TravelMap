@@ -5,9 +5,16 @@
   align-items: center;
 }
 
-.header {
-}
-
 .footer > p {
   font-family: 'MontRegular';
+}
+
+.imageContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.image {
+  width: 150px;
+  height: 100px;
 }

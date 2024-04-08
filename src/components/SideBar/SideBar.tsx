@@ -1,15 +1,15 @@
-import styles from './SideBar.module.css'
 import AppIcon from '@assets/svg/AppIcon.svg'
-import { useState } from 'react'
-import { IoSearch, IoBookmarkSharp, IoManSharp, IoExit, IoEnter } from 'react-icons/io5'
-import { SidebarMenu } from './SideBarPanel'
-import { SearchMenu } from './SidebarPanels/SearchMenu'
 import { SideBarButton } from '@components/SideBarButton/SideBarButton'
 import { useAuth } from '@hooks/useAuth'
-import { useNavigate } from 'react-router-dom'
-import { useAppDispatch } from '@store/hooks'
 import { removeUser } from '@store/actions/userSlice'
+import { useAppDispatch } from '@store/hooks'
+import { useState } from 'react'
+import { IoBookmarkSharp, IoEnter, IoExit, IoSearch } from 'react-icons/io5'
+import { useNavigate } from 'react-router-dom'
+import styles from './SideBar.module.css'
+import { SidebarMenu } from './SideBarPanel'
 import { FeaturesPanel } from './SidebarPanels/FeaturesPanel'
+import { SearchMenu } from './SidebarPanels/SearchMenu'
 
 export const SideBar = () => {
   const [isOpenSearchMenu, setIsOpenSearchMenu] = useState<boolean>(false)

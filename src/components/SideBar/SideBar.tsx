@@ -4,7 +4,7 @@ import { useAuth } from '@hooks/useAuth'
 import { removeUser } from '@store/actions/userSlice'
 import { useAppDispatch } from '@store/hooks'
 import { useState } from 'react'
-import { IoBookmarkSharp, IoEnter, IoExit, IoSearch } from 'react-icons/io5'
+import { IoBookmark, IoEnter, IoExit, IoSearch } from 'react-icons/io5'
 import { useNavigate } from 'react-router-dom'
 import styles from './SideBar.module.css'
 import { SidebarMenu } from './SideBarPanel'
@@ -59,7 +59,7 @@ export const SideBar = () => {
               title='mark'
               onClick={openFavouritePanel}
             >
-              <IoBookmarkSharp size={20} />
+              <IoBookmark size={20} />
             </SideBarButton>
           </div>
         </section>

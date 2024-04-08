@@ -29,6 +29,7 @@ interface Properties {
       natural: string
     }
   }
+  place_id: string
 }
 
 interface Geometry {

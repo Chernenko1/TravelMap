@@ -1,0 +1,30 @@
+.featuresPanel,
+.cards {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.featuresPanel {
+  width: 400px;
+  height: 100%;
+  padding: 20px 25px;
+  box-sizing: border-box;
+}
+
+.inputSearch {
+  width: 350px;
+}
+
+.cards {
+  row-gap: 10px;
+}
+
+.infoContainer {
+  height: 90%;
+}
+
+.infoContainer > p {
+  font-family: 'MontBold';
+  font-size: 20px;
+}

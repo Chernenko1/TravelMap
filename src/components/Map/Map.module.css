@@ -1,3 +1,12 @@
 .map {
-  /* display: flex; */
+  position: relative;
+  height: 100vh;
+  width: 100%;
+}
+
+.locationButtons {
+  position: absolute;
+  bottom: 12px;
+  right: 10px;
+  z-index: 2;
 }

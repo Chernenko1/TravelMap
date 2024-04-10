@@ -6,27 +6,28 @@ import { addFavPlace, deleteFavPlace } from '@store/actions/favPlaces'
 import { useDataToFirestore } from '@hooks/useDataToFirestore'
 
 interface IMarkerDescription {
-  name: string
-  address_line: string
   distance: number
-  id: string
+  place: Place
 }
 
 const iconSize = 24
 
-export const MarkerDescription = ({ name, address_line, distance, id }: IMarkerDescription) => {
+export const MarkerDescription = ({ place, distance }: IMarkerDescription) => {
   const { addData, removeData, isError } = useDataToFirestore()
-  const favPlace = useAppSelector((state) => state.favPlaces.id).includes(id)
+
+  const placeId = useAppSelector((state) => state.favPlaces.places)
+    .map((place) => place.placeId)
+    .includes(place.placeId)
 
   const dispatch = useAppDispatch()
 
   function addPlaceToState() {
-    if (favPlace) {
-      removeData(id)
-      !isError && dispatch(deleteFavPlace(id))
+    if (placeId) {
+      removeData(place)
+      !isError && dispatch(deleteFavPlace(place.placeId))
     } else {
-      addData(id)
-      !isError && dispatch(addFavPlace(id))
+      addData(place)
+      !isError && dispatch(addFavPlace(place))
     }
   }
 
@@ -34,9 +35,9 @@ export const MarkerDescription = ({ name, address_line, distance, id }: IMarkerD
     <div>
       <div>
         <header className={styles.header}>
-          <h3>{name}</h3>
+          <h3>{place.name}</h3>
           <div onClick={addPlaceToState}>
-            {favPlace ? <IoBookmark size={iconSize} color='#C75E5E' /> : <IoBookmarkOutline size={iconSize} />}
+            {placeId ? <IoBookmark size={iconSize} color='#C75E5E' /> : <IoBookmarkOutline size={iconSize} />}
           </div>
         </header>
 
@@ -44,7 +45,7 @@ export const MarkerDescription = ({ name, address_line, distance, id }: IMarkerD
           <img src={noImage} className={styles.image} />
         </div>
 
-        <p>{address_line}</p>
+        <p>{place.address}</p>
 
         <div className={styles.footer}>
           <p>Distance: {distance}</p>

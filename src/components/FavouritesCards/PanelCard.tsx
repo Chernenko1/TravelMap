@@ -1,21 +1,34 @@
 import noImage from '@assets/images/noImage_2.jpg'
 import styles from './PanelCard.module.css'
-import { IoBookmarkSharp, IoCaretForward } from 'react-icons/io5'
+import { IoBookmark, IoCaretForward } from 'react-icons/io5'
+import { useAppDispatch } from '@store/hooks'
+import { useDataToFirestore } from '@hooks/useDataToFirestore'
+import { deleteFavPlace } from '@store/actions/favPlaces'
 
 interface IPanelCard {
-  title: string
-  icons?: string[]
-  description: string
+  place: Place
 }
 
-export const PanelCard = ({ title, icons, description }: IPanelCard) => {
+export const PanelCard = ({ place }: IPanelCard) => {
+  const { placeId, coords, name } = place
+
+  const dispatch = useAppDispatch()
+  const { removeData, isError } = useDataToFirestore()
+
+  function removePlace() {
+    removeData(place)
+    !isError && dispatch(deleteFavPlace(place.placeId))
+  }
+
+  const description =
+    'Lörem ipsum jere. Intrabel peraktiv pävufåsk läslov pide. Exon prelogi. Någonstansare  begöpp. Homoadoption tesände keck såsom köttrymden. Epigen digon fast svennefiera håven postfaktisk. Atomslöjd defåling nigovena tegt i platt-tv. Sextremism julgranssyndrom. Rit-avdrag fyr, jukanat don. Apfälla menskopp eftersom spetät senessa inklusive mepaktiga. Bloggbävning makroligt spepp gönas. Sitskate epir tidsfönster. Hjärtslagslag defånera. Neck röstsamtal möbelhund. Hexaledes ryggsäcksmodellen hikikomori när stenomiheten täpos. Du kan vara drabbad. '
   const limit = 200
 
   return (
     <div className={styles.panelCard}>
       <div className={styles.header}>
         <img src={noImage} className={styles.image} />
-        <p>{title}</p>
+        <p>{name}</p>
       </div>
 
       <div className={styles.description}>
@@ -23,7 +36,7 @@ export const PanelCard = ({ title, icons, description }: IPanelCard) => {
       </div>
 
       <div className={styles.buttons}>
-        <IoBookmarkSharp size={24} color='#C75E5E' />
+        <IoBookmark size={24} color='#C75E5E' onClick={removePlace} />
         <IoCaretForward size={24} />
       </div>
     </div>

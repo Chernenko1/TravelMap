@@ -1,13 +1,13 @@
 import { useState } from 'react'
 import { database } from '@components/Firebase'
 import { useAppSelector } from '@store/hooks'
-import { updateDoc, doc, arrayUnion, arrayRemove } from 'firebase/firestore'
+import { updateDoc, arrayRemove, arrayUnion, doc, setDoc } from 'firebase/firestore'
 
 interface IUseDataToFirestore {
   isError: boolean | Error
   isLoading: boolean
-  addData: (placeId: string) => void
-  removeData: (placeId: string) => void
+  addData: (placeId: Place) => void
+  removeData: (placeId: Place) => void
 }
 
 export function useDataToFirestore(): IUseDataToFirestore {
@@ -17,11 +17,11 @@ export function useDataToFirestore(): IUseDataToFirestore {
   const userId = useAppSelector((state) => state.user.id)
   const docRef = doc(database, 'Users', userId as string)
 
-  async function addData(placeId: string) {
+  async function addData(place: {}) {
     try {
       setIsLoading(true)
       await updateDoc(docRef, {
-        places: arrayUnion(placeId),
+        places: arrayUnion(place),
       })
       setIsLoading(false)
     } catch (error) {
@@ -29,11 +29,11 @@ export function useDataToFirestore(): IUseDataToFirestore {
     }
   }
 
-  async function removeData(placeId: string) {
+  async function removeData(place: Place) {
     try {
       setIsLoading(true)
       await updateDoc(docRef, {
-        places: arrayRemove(placeId),
+        places: arrayRemove(place),
       })
       setIsLoading(false)
     } catch (error) {

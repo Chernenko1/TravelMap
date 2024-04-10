@@ -13,26 +13,23 @@ interface Properties {
   name: string
   distance: number
   categories: string[]
-  extent: number[]
-  country: string
-  state: string
-  city: string
-  postcode: string
-  district: string
-  street: string
-  housenumber: string
   address_line2: string
-  datasource: {
-    raw: {
-      name: string
-      landuse: string
-      natural: string
-    }
-  }
+  lon: number
+  lat: number
   place_id: string
 }
 
 interface Geometry {
   type: string
   coordinates: number[]
+}
+
+interface Place {
+  name: string
+  address: string
+  coords: {
+    lon: number
+    lat: number
+  }
+  placeId: string
 }

@@ -2,11 +2,8 @@ import { PanelCard } from '@components/FavouritesCards/PanelCard'
 import { Input } from '@components/Input/Input'
 import { ScrollMenu } from '@components/ScrollMenu/ScrollMenu'
 import styles from './FavouritesPanel.module.css'
-import { useAppSelector } from '@store/hooks'
 
 export const FeaturesPanel = () => {
-  const placeIds = useAppSelector((state) => state.favPlaces.id)
-
   return (
     <div className={styles.featuresPanel}>
       <div className={styles.inputSearch}>

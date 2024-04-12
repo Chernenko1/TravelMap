@@ -1,21 +1,22 @@
-import { Circle, MapContainer, Marker, TileLayer, useMap } from 'react-leaflet'
+import { Circle, MapContainer, Marker, TileLayer } from 'react-leaflet'
 import 'leaflet/dist/leaflet.css'
 import { getPlaces } from '@utils/getPlaces'
 import { useEffect, useState } from 'react'
 import styles from './Map.module.css'
-import { useAppSelector } from '@store/hooks'
+import { useAppDispatch, useAppSelector } from '@store/hooks'
 import { LocationButton } from '@components/LocationButton/LocationButton'
 import { MapController } from './MapController'
 import { FeaturesPlaces } from './FeaturesPlaces'
+import { setFoundPlaces } from '@store/actions/searchSlice'
 
 export const Map = () => {
-  const { userCoords, radius, searchPlaces } = useAppSelector((state) => state.search)
+  const { userCoords, radius, searchPlaces, coordsToMove, places } = useAppSelector((state) => state.search)
 
-  const [features, setFeatures] = useState<Feature[] | undefined>(undefined)
+  const dispatch = useAppDispatch()
 
   async function searchPlace() {
     let response = await getPlaces(userCoords?.lat as number, userCoords?.lng as number, +radius, searchPlaces)
-    setFeatures(response)
+    dispatch(setFoundPlaces(response))
   }
 
   useEffect(() => {
@@ -37,12 +38,12 @@ export const Map = () => {
           />
           <Circle center={userCoords} radius={+radius} />
           <Marker position={userCoords} />
-          {features && <FeaturesPlaces features={features} />}
-          <MapController />
+          {places && <FeaturesPlaces features={places} />}
+          <MapController coords={coordsToMove} />
+          <div className={styles.locationButtons}>
+            <LocationButton />
+          </div>
         </MapContainer>
-        <div className={styles.locationButtons}>
-          <LocationButton />
-        </div>
       </div>
     )
   }

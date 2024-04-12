@@ -8,7 +8,7 @@ interface IMapController {
 }
 
 export const MapController = ({ coords }: IMapController) => {
-  const center = useAppSelector((state) => state.search.userCoords)
+  const userCoords = useAppSelector((state) => state.search.userCoords)
 
   const map = useMap()
   const flyToDuration = 1.5
@@ -19,9 +19,8 @@ export const MapController = ({ coords }: IMapController) => {
       duration: flyToDuration,
     })
   }
-
   function flyToCenter() {
-    map.flyTo(center, 13, {
+    map.flyTo(userCoords, 15, {
       animate: true,
       duration: flyToDuration,
     })

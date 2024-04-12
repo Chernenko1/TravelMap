@@ -5,6 +5,7 @@ import storage from 'redux-persist/lib/storage'
 import favPalcesReducer from './actions/favPlaces'
 import searchReducer from './actions/searchSlice'
 import userReducer from './actions/userSlice'
+import settingsReduser from './actions/searchSlice'
 
 const userConfig = {
   key: 'user',
@@ -16,12 +17,19 @@ const favouritePlacesConfing = {
   storage,
 }
 
+const settingConfig = {
+  key: 'settings',
+  storage,
+  blacklist: ['interestCoords'],
+}
+
 const userPersistReducer = persistReducer(userConfig, userReducer)
 const favouritePlacesPersistReducer = persistReducer(favouritePlacesConfing, favPalcesReducer)
+const settingsPersistReducer = persistReducer(settingConfig, settingsReduser)
 
 export const store = configureStore({
   reducer: {
-    search: searchReducer,
+    search: settingsPersistReducer,
     favPlaces: favouritePlacesPersistReducer,
     user: userPersistReducer,
   },

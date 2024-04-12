@@ -27,7 +27,7 @@ export const LoginForm = () => {
 
   function handleSubmit(values: LoginValues) {
     userLogin(values)
-    if (!!isError) {
+    if (!isError) {
       navigate('/')
     }
   }

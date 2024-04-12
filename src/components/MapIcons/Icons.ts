@@ -152,10 +152,92 @@ const unknown = new Icon({
   popupAnchor: [0, -20],
 })
 
+// export const MapIcon = [
+//   {
+//     icon: entertainment,
+//     value: `entertainment.zoo,entertainment.aquarium,entertainment.planetarium,entertainment.cinema,entertainment.escape_game,entertainment.miniature_golf,entertainment.bowling_alley,flying_fox,entertainment.water_park,entertainment.theme_park`,
+//   },
+//   {
+//     icon: gas,
+//     value: 'commercial.gas',
+//   },
+//   {
+//     icon: shop,
+//     value:
+//       'commercial.food_and_drink, commercial.supermarket,commercial.marketplace,commercial.shopping_mall,commercial.discount_store,commercial.kiosk',
+//   },
+//   {
+//     icon: religion,
+//     value: 'tourism.sights.place_of_worship,tourism.sights.monastery,religion',
+//   },
+//   {
+//     icon: accommodation,
+//     value: 'accommodation',
+//   },
+//   {
+//     icon: architecture,
+//     value: 'tourism.sights.bridge,tourism.sights.castle',
+//   },
+//   {
+//     icon: history,
+//     value:
+//       'building.historic,tourism.sights.memorial,tourism.sights.battlefield,tourism.sights.fort,tourism.sights.ruines',
+//   },
+//   {
+//     icon: sport,
+//     value:
+//       'activity,entertainment.activity_park.climbing,entertainment.activity_park.trampoline,entertainment.activity_park, building.sport,sport',
+//   },
+//   {
+//     icon: industrial,
+//     value: 'airport,power,railway',
+//   },
+//   {
+//     icon: culture,
+//     value: 'entertainment.culture',
+//   },
+//   {
+//     icon: adult,
+//     value: 'commercial.erotic, adult',
+//   },
+//   {
+//     icon: other,
+//     value: 'camping,leisure',
+//   },
+//   {
+//     icon: bank,
+//     value: 'service.financial',
+//   },
+//   {
+//     icon: cafe,
+//     value: 'catering.cafe',
+//   },
+//   {
+//     icon: food,
+//     value: 'catering',
+//   },
+//   {
+//     icon: cars,
+//     value: 'rental.car',
+//   },
+//   {
+//     icon: nature,
+//     value: 'natural,national_park',
+//   },
+//   {
+//     icon: bike,
+//     value: 'rental.bicycle',
+//   },
+//   {
+//     icon: unknown,
+//     value: '',
+//   },
+// ]
+
 export const MapIcon = [
   {
     icon: entertainment,
-    value: `entertainment.zoo,entertainment.aquarium,entertainment.planetarium,entertainment.cinema,entertainment.escape_game,entertainment.miniature_golf,entertainment.bowling_alley,flying_fox,entertainment.water_park,entertainment.theme_park`,
+    value: `entertainment`,
   },
   {
     icon: gas,
@@ -163,12 +245,11 @@ export const MapIcon = [
   },
   {
     icon: shop,
-    value:
-      'commercial.food_and_drink, commercial.supermarket,commercial.marketplace,commercial.shopping_mall,commercial.discount_store,commercial.kiosk',
+    value: 'commercial',
   },
   {
     icon: religion,
-    value: 'tourism.sights.place_of_worship,tourism.sights.monastery,religion',
+    value: 'religion',
   },
   {
     icon: accommodation,
@@ -185,8 +266,7 @@ export const MapIcon = [
   },
   {
     icon: sport,
-    value:
-      'activity,entertainment.activity_park.climbing,entertainment.activity_park.trampoline,entertainment.activity_park, building.sport,sport',
+    value: 'sport',
   },
   {
     icon: industrial,
@@ -198,7 +278,7 @@ export const MapIcon = [
   },
   {
     icon: adult,
-    value: 'commercial.erotic, adult',
+    value: 'adult,commercial.erotic',
   },
   {
     icon: other,
@@ -228,6 +308,7 @@ export const MapIcon = [
     icon: bike,
     value: 'rental.bicycle',
   },
+
   {
     icon: unknown,
     value: '',

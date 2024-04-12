@@ -1,9 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit'
-import storage from 'redux-persist/lib/storage'
 import { persistReducer } from 'redux-persist'
+import persistStore from 'redux-persist/es/persistStore'
+import storage from 'redux-persist/lib/storage'
+import favPalcesReducer from './actions/favPlaces'
 import searchReducer from './actions/searchSlice'
 import userReducer from './actions/userSlice'
-import persistStore from 'redux-persist/es/persistStore'
 
 const userConfig = {
   key: 'user',
@@ -15,6 +16,7 @@ const userPersistReducer = persistReducer(userConfig, userReducer)
 export const store = configureStore({
   reducer: {
     search: searchReducer,
+    favPlaces: favPalcesReducer,
     user: userPersistReducer,
   },
   middleware: (getDefaultMiddleware) =>

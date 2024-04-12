@@ -1,11 +1,7 @@
 import { Authentication } from '@components/Authentication/Authentication'
 import styles from '@components/Authentication/Form.module.css'
-import { firebaseErrors } from '@constants/firebase'
-import { setUser } from '@store/actions/userSlice'
-import { useAppDispatch, useAppSelector } from '@store/hooks'
-import { getAuth, signInWithEmailAndPassword } from 'firebase/auth'
+import { useUserAuthentication } from '@hooks/useUserAuthentication'
 import { Field, Form, Formik } from 'formik'
-import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import * as Yup from 'yup'
 
@@ -24,26 +20,16 @@ const initialValues: LoginValues = {
   password: '',
 }
 
-type ErrorCodes = 'auth/too-many-requests' | 'auth/invalid-credential'
-
 export const LoginForm = () => {
-  const [resError, setResError] = useState('')
+  const { userLogin, isError, isLoading } = useUserAuthentication()
 
   const navigate = useNavigate()
-  const dispatch = useAppDispatch()
 
   function handleSubmit(values: LoginValues) {
-    setResError('')
-    const auth = getAuth()
-    signInWithEmailAndPassword(auth, values.email, values.password)
-      .then(({ user }) => {
-        dispatch(setUser({ id: user.uid, email: user.email }))
-        navigate('/')
-      })
-      .catch(({ code }: { code: ErrorCodes }) => {
-        console.log(code)
-        setResError(firebaseErrors[code])
-      })
+    userLogin(values)
+    if (!!isError) {
+      navigate('/')
+    }
   }
 
   return (
@@ -74,10 +60,10 @@ export const LoginForm = () => {
                   placeholder='Пароль'
                 />
               </div>
-              {resError && <div className={styles.resError}>{resError}</div>}
+              {isError && <div className={styles.resError}>{isError}</div>}
             </div>
 
-            <button type='submit' className={styles.button}>
+            <button type='submit' disabled={isLoading} className={styles.button}>
               Войти
             </button>
 

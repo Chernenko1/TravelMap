@@ -27,7 +27,7 @@ export const RegistrationForm = () => {
 
   function handleSubmit(values: RegValues) {
     userRegistration(values)
-    if (!!isError) {
+    if (!isError) {
       navigate('/')
     }
   }

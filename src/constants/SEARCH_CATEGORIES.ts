@@ -26,7 +26,8 @@ export const SEARCH_CATEGORIES: { title: string; value: string; icon: string }[]
   {
     icon: Sport,
     title: 'Спорт',
-    value: 'sport',
+    value:
+      'activity,entertainment.activity_park.climbing,entertainment.activity_park.trampoline,entertainment.activity_park, building.sport,sport',
   },
   {
     icon: Industrial,
@@ -77,7 +78,7 @@ export const SEARCH_CATEGORIES: { title: string; value: string; icon: string }[]
   {
     icon: Entertainment,
     title: 'Развлечения',
-    value: `entertainment`,
+    value: `entertainment.zoo,entertainment.aquarium,entertainment.planetarium,entertainment.cinema,entertainment.escape_game,entertainment.miniature_golf,entertainment.bowling_alley,entertainment.water_park,entertainment.theme_park`,
   },
   {
     icon: Other,
@@ -92,7 +93,7 @@ export const SEARCH_CATEGORIES: { title: string; value: string; icon: string }[]
   {
     icon: Religion,
     title: 'Религия',
-    value: 'religion',
+    value: 'tourism.sights.place_of_worship,tourism.sights.monastery,religion',
   },
   {
     icon: History,

@@ -1,5 +1,6 @@
 import AuthImage from '@assets/svg/authImg.svg'
 import React from 'react'
+import { LoginForm } from '../../pages/Login/LoginForm'
 import styles from './Authentication.module.css'
 
 interface IAuth {

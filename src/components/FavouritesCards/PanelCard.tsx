@@ -4,14 +4,13 @@ import { IoBookmark, IoCaretForward } from 'react-icons/io5'
 import { useAppDispatch } from '@store/hooks'
 import { useDataToFirestore } from '@hooks/useDataToFirestore'
 import { deleteFavPlace } from '@store/actions/favPlaces'
-import { setMoveCoords } from '@store/actions/searchSlice'
 
 interface IPanelCard {
   place: Place
 }
 
 export const PanelCard = ({ place }: IPanelCard) => {
-  const { coords, name } = place
+  const { placeId, coords, name } = place
 
   const dispatch = useAppDispatch()
   const { removeData, isError } = useDataToFirestore()
@@ -19,10 +18,6 @@ export const PanelCard = ({ place }: IPanelCard) => {
   function removePlace() {
     removeData(place)
     !isError && dispatch(deleteFavPlace(place.placeId))
-  }
-
-  function moveToPlace() {
-    dispatch(setMoveCoords(coords))
   }
 
   const description =
@@ -42,7 +37,7 @@ export const PanelCard = ({ place }: IPanelCard) => {
 
       <div className={styles.buttons}>
         <IoBookmark size={24} color='#C75E5E' onClick={removePlace} />
-        <IoCaretForward size={24} onClick={moveToPlace} />
+        <IoCaretForward size={24} />
       </div>
     </div>
   )

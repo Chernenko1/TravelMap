@@ -1,23 +1,15 @@
-import { useEffect, useState } from 'react'
-
-interface IGeolocation {
-  lat: number
-  lng: number
-}
+import { setUserCoords } from '@store/actions/searchSlice'
+import { useAppDispatch } from '@store/hooks'
 
 export const useGeolocation = () => {
-  const [location, setLocation] = useState<IGeolocation | undefined>(undefined)
-
-  useEffect(() => {
-    getUserLocation()
-  }, [])
+  const dispatch = useAppDispatch()
 
   function getUserLocation() {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
         (position) => {
           const { latitude, longitude } = position.coords
-          setLocation({ lat: latitude, lng: longitude })
+          dispatch(setUserCoords({ lat: latitude, lng: longitude }))
         },
         (error) => {
           console.error('Error getting userLocation', error)
@@ -27,5 +19,5 @@ export const useGeolocation = () => {
       console.error('Geolocation is not supported by this browser.')
     }
   }
-  return location
+  return { getUserLocation }
 }

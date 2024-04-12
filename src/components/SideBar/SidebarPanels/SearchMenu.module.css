@@ -8,7 +8,7 @@ h3 {
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  padding: 20px 5px;
+  padding: 20px 25px;
   height: 100%;
   box-sizing: border-box;
 }
@@ -32,4 +32,5 @@ h3 {
 
 .settingsContainer {
   width: 350px;
+  height: 490px;
 }

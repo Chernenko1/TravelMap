@@ -1,69 +1,50 @@
-import { Circle, MapContainer, Marker, Popup, TileLayer } from 'react-leaflet'
+import { Circle, MapContainer, Marker, TileLayer } from 'react-leaflet'
 import 'leaflet/dist/leaflet.css'
 import { getPlaces } from '@utils/getPlaces'
-import { useEffect, useState } from 'react'
-import { MarkerDescription } from './MarkerDescription/MarkerDescription'
-import { useAppSelector } from '@store/hooks'
-import { MapIcon } from '@components/MapIcons/Icons'
+import { useEffect } from 'react'
+import styles from './Map.module.css'
+import { useAppDispatch, useAppSelector } from '@store/hooks'
+import { LocationButton } from '@components/LocationButton/LocationButton'
+import { MapController } from './MapController'
+import { FeaturesPlaces } from './FeaturesPlaces'
+import { setFoundPlaces } from '@store/actions/searchSlice'
 
 export const Map = () => {
-  const [features, setFeatures] = useState<Feature[] | undefined>(undefined)
-  const { userCoords, radius, searchPlaces } = useAppSelector((state) => state.search)
+  const { userCoords, radius, searchPlaces, coordsToMove, places } = useAppSelector((state) => state.search)
+
+  const dispatch = useAppDispatch()
 
   async function searchPlace() {
     let response = await getPlaces(userCoords?.lat as number, userCoords?.lng as number, +radius, searchPlaces)
-    setFeatures(response)
+    dispatch(setFoundPlaces(response))
   }
 
   useEffect(() => {
     searchPlace()
   }, [userCoords, radius, searchPlaces])
 
-  function setIcon(arr: string[]) {
-    for (var i = 0; i < MapIcon.length; i++) {
-      let strArr = MapIcon[i].value.split(',')
-      if (strArr.some((item) => arr.includes(item))) {
-        return MapIcon[i].icon
-      }
-    }
-    return MapIcon.at(-1)?.icon
-  }
-
   if (userCoords) {
     return (
-      <MapContainer zoomControl={false} center={userCoords} zoom={13} style={{ height: '98vh', width: '100%' }}>
-        <TileLayer
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-          url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
-        />
-        <Circle center={userCoords} radius={+radius} />
-        <Marker position={userCoords}>
-          <Popup>Жопа</Popup>
-        </Marker>
-        {features &&
-          features.map((item, ind) => {
-            let icon = setIcon(item.properties.categories)
-            return (
-              <Marker
-                position={{ lat: item.geometry.coordinates[1], lng: item.geometry.coordinates[0] }}
-                icon={icon}
-                key={ind}
-              >
-                <Popup>
-                  <MarkerDescription
-                    name={item.properties.name}
-                    address_line={item.properties.address_line2}
-                    distance={item.properties.distance}
-                  />
-                </Popup>
-              </Marker>
-            )
-          })}
-      </MapContainer>
+      <div className={styles.map}>
+        <MapContainer
+          zoomControl={false}
+          center={userCoords}
+          zoom={13}
+          style={{ height: '100vh', width: '100%', zIndex: 1 }}
+        >
+          <TileLayer
+            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
+          />
+          <Circle center={userCoords} radius={+radius} />
+          <Marker position={userCoords} />
+          {places && <FeaturesPlaces features={places} />}
+          <MapController coords={coordsToMove} />
+          <div className={styles.locationButtons}>
+            <LocationButton />
+          </div>
+        </MapContainer>
+      </div>
     )
   }
-}
-
-{
-  /* <PlacesOfInterest places={features?.map((item) => item.properties) as Properties[]} /> */
 }

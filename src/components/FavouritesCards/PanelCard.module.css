@@ -1,0 +1,45 @@
+.panelCard,
+.buttons,
+.header {
+  display: flex;
+}
+
+.panelCard {
+  width: 350px;
+  height: 231px;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 10px 10px;
+  border: solid #c4c4c4 3px;
+  border-radius: 10px;
+  box-sizing: border-box;
+}
+
+.header {
+  column-gap: 20px;
+  align-items: center;
+}
+
+.header > p {
+  font-family: 'Mont';
+  font-weight: 800;
+  font-size: 16px;
+}
+
+.image {
+  width: 120px;
+  height: 99px;
+  border-radius: 10px;
+}
+
+.buttons {
+  justify-content: space-between;
+}
+
+.description > p {
+  font-family: 'Mont';
+  word-wrap: break-word;
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 12px;
+}

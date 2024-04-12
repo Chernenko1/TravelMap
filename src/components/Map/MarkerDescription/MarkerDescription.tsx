@@ -4,7 +4,7 @@ import styles from './MarkerDescription.module.css'
 import { useAppDispatch, useAppSelector } from '@store/hooks'
 import { addFavPlace, deleteFavPlace } from '@store/actions/favPlaces'
 import { useDataToFirestore } from '@hooks/useDataToFirestore'
-
+import { useAuth } from '@hooks/useAuth'
 interface IMarkerDescription {
   distance: number
   place: Place
@@ -13,7 +13,8 @@ interface IMarkerDescription {
 const iconSize = 24
 
 export const MarkerDescription = ({ place, distance }: IMarkerDescription) => {
-  const { addData, removeData, isError } = useDataToFirestore()
+  const { isAuth } = useAuth()
+  const { addData, removeData, isError } = useDataToFirestore(isAuth)
 
   const placeId = useAppSelector((state) => state.favPlaces.places)
     .map((place) => place.placeId)
@@ -36,9 +37,12 @@ export const MarkerDescription = ({ place, distance }: IMarkerDescription) => {
       <div>
         <header className={styles.header}>
           <h3>{place.name}</h3>
-          <div onClick={addPlaceToState}>
-            {placeId ? <IoBookmark size={iconSize} color='#C75E5E' /> : <IoBookmarkOutline size={iconSize} />}
-          </div>
+
+          {isAuth && (
+            <div onClick={addPlaceToState}>
+              {placeId ? <IoBookmark size={iconSize} color='#C75E5E' /> : <IoBookmarkOutline size={iconSize} />}
+            </div>
+          )}
         </header>
 
         <div className={styles.imageContainer}>

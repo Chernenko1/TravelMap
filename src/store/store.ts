@@ -11,12 +11,18 @@ const userConfig = {
   storage,
 }
 
+const favouritePlacesConfing = {
+  key: 'favourite',
+  storage,
+}
+
 const userPersistReducer = persistReducer(userConfig, userReducer)
+const favouritePlacesPersistReducer = persistReducer(favouritePlacesConfing, favPalcesReducer)
 
 export const store = configureStore({
   reducer: {
     search: searchReducer,
-    favPlaces: favPalcesReducer,
+    favPlaces: favouritePlacesPersistReducer,
     user: userPersistReducer,
   },
   middleware: (getDefaultMiddleware) =>

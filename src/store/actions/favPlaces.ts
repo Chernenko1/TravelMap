@@ -2,11 +2,12 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { RootState } from '@store/store'
 
 interface IFavPlaces {
-  id: string[]
+  places: Place[]
 }
 
 const initialState: IFavPlaces = {
-  id: [],
+  //@ts-ignore
+  places: [],
 }
 
 export const favPlaces = createSlice({
@@ -14,14 +15,15 @@ export const favPlaces = createSlice({
   initialState,
   reducers: {
     setFavPlaces: (state, actions) => {
-      state.id = [...state.id, ...actions.payload]
-      // console.log(new Set(state.id))
+      state.places = actions.payload
     },
-    addFavPlace: (state, actions: PayloadAction<string>) => {
-      state.id.push(actions.payload)
+    addFavPlace: (state, actions) => {
+      state.places.push(actions.payload)
     },
     deleteFavPlace: (state, actions: PayloadAction<string>) => {
-      state.id = state.id.filter((item) => item !== actions.payload)
+      let places = state.places.filter((place) => place.placeId !== actions.payload)
+      //@ts-ignore
+      state.places = places
     },
   },
 })

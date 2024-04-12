@@ -1,29 +1,51 @@
-import { IoReturnUpForwardOutline, IoHeartOutline } from 'react-icons/io5'
+import { IoReturnUpForwardOutline, IoBookmark, IoBookmarkOutline } from 'react-icons/io5'
 import noImage from '@assets/images/noimage.png'
 import styles from './MarkerDescription.module.css'
+import { useAppDispatch, useAppSelector } from '@store/hooks'
+import { addFavPlace, deleteFavPlace } from '@store/actions/favPlaces'
+import { useDataToFirestore } from '@hooks/useDataToFirestore'
 
 interface IMarkerDescription {
-  name: string
-  address_line: string
   distance: number
+  place: Place
 }
 
 const iconSize = 24
 
-export const MarkerDescription = ({ name, address_line, distance }: IMarkerDescription) => {
+export const MarkerDescription = ({ place, distance }: IMarkerDescription) => {
+  const { addData, removeData, isError } = useDataToFirestore()
+
+  const placeId = useAppSelector((state) => state.favPlaces.places)
+    .map((place) => place.placeId)
+    .includes(place.placeId)
+
+  const dispatch = useAppDispatch()
+
+  function addPlaceToState() {
+    if (placeId) {
+      removeData(place)
+      !isError && dispatch(deleteFavPlace(place.placeId))
+    } else {
+      addData(place)
+      !isError && dispatch(addFavPlace(place))
+    }
+  }
+
   return (
     <div>
       <div>
         <header className={styles.header}>
-          <h3>{name}</h3>
-          <IoHeartOutline size={iconSize} />
+          <h3>{place.name}</h3>
+          <div onClick={addPlaceToState}>
+            {placeId ? <IoBookmark size={iconSize} color='#C75E5E' /> : <IoBookmarkOutline size={iconSize} />}
+          </div>
         </header>
 
         <div className={styles.imageContainer}>
           <img src={noImage} className={styles.image} />
         </div>
 
-        <p>{address_line}</p>
+        <p>{place.address}</p>
 
         <div className={styles.footer}>
           <p>Distance: {distance}</p>

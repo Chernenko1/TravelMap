@@ -41,19 +41,19 @@ export const Map = () => {
           <Popup>Жопа</Popup>
         </Marker>
         {features &&
-          features.map((item, ind) => {
-            let icon = setIcon(item.properties.categories)
+          features.map(({ properties }, ind) => {
+            let icon = setIcon(properties.categories)
             return (
-              <Marker
-                position={{ lat: item.geometry.coordinates[1], lng: item.geometry.coordinates[0] }}
-                icon={icon}
-                key={ind}
-              >
+              <Marker position={{ lat: properties.lat, lng: properties.lon }} icon={icon} key={ind}>
                 <Popup>
                   <MarkerDescription
-                    name={item.properties.name || 'Нет названия'}
-                    address_line={item.properties.address_line2}
-                    distance={item.properties.distance}
+                    distance={properties.distance}
+                    place={{
+                      name: properties.name || 'Название неизвестно',
+                      address: properties.address_line2,
+                      coords: { lon: properties.lon, lat: properties.lat },
+                      placeId: properties.place_id,
+                    }}
                   />
                 </Popup>
               </Marker>

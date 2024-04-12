@@ -4,7 +4,7 @@ import { IoBookmark, IoCaretForward } from 'react-icons/io5'
 import { useAppDispatch } from '@store/hooks'
 import { useDataToFirestore } from '@hooks/useDataToFirestore'
 import { deleteFavPlace } from '@store/actions/favPlaces'
-import { setFoundPlaces, setMoveCoords } from '@store/actions/searchSlice'
+import { setMoveCoords } from '@store/actions/searchSlice'
 
 interface IPanelCard {
   place: Place

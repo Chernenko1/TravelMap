@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { database } from '@components/Firebase'
 import { useAppSelector } from '@store/hooks'
-import { updateDoc, arrayRemove, arrayUnion, doc, setDoc } from 'firebase/firestore'
+import { updateDoc, arrayRemove, arrayUnion, doc } from 'firebase/firestore'
 
 interface IUseDataToFirestore {
   isError: boolean | Error

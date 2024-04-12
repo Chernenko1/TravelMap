@@ -1,7 +1,7 @@
 import { Circle, MapContainer, Marker, TileLayer } from 'react-leaflet'
 import 'leaflet/dist/leaflet.css'
 import { getPlaces } from '@utils/getPlaces'
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import styles from './Map.module.css'
 import { useAppDispatch, useAppSelector } from '@store/hooks'
 import { LocationButton } from '@components/LocationButton/LocationButton'

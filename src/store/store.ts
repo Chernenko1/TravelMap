@@ -3,7 +3,6 @@ import { persistReducer } from 'redux-persist'
 import persistStore from 'redux-persist/es/persistStore'
 import storage from 'redux-persist/lib/storage'
 import favPalcesReducer from './actions/favPlaces'
-import searchReducer from './actions/searchSlice'
 import userReducer from './actions/userSlice'
 import settingsReduser from './actions/searchSlice'
 

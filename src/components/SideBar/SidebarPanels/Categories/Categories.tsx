@@ -1,7 +1,5 @@
-import { useAppDispatch, useAppSelector } from '@store/hooks'
 import styles from './Categories.module.css'
-import { SEARCH_CATEGORIES } from '@constants/SEARCH_CATEGORIES'
-import { useState } from 'react'
+import { SEARCH_CATEGORIES } from '@constants/categories'
 
 interface ICategories {
   places: string[]

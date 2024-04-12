@@ -1,22 +1,15 @@
 import AuthImage from '@assets/svg/authImg.svg'
+import React from 'react'
 import styles from './Authentication.module.css'
-import { Field, Form, Formik } from 'formik'
-import { LoginForm } from './LoginForm'
-import { RegistrationForm } from './RegistrationFrom'
 
-interface IFormAuth {
-  email: string
-  password: string
+interface IAuth {
+  children?: React.ReactNode
 }
 
-export const Authentication = () => {
-  const initialValues: IFormAuth = { email: '', password: '' }
-
+export const Authentication = ({ children }: IAuth) => {
   return (
     <div className={styles.authWrapper}>
-      <div className={styles.authContainer}>
-        <LoginForm message='Регистрация' />
-      </div>
+      <div className={styles.authContainer}>{children}</div>
       <div className={styles.authImg}>
         <img src={AuthImage} />
       </div>

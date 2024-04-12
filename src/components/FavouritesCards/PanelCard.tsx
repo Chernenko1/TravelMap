@@ -5,6 +5,7 @@ import { useAppDispatch } from '@store/hooks'
 import { useDataToFirestore } from '@hooks/useDataToFirestore'
 import { deleteFavPlace } from '@store/actions/favPlaces'
 import { setMoveCoords } from '@store/actions/searchSlice'
+import { useAuth } from '@hooks/useAuth'
 
 interface IPanelCard {
   place: Place
@@ -13,8 +14,9 @@ interface IPanelCard {
 export const PanelCard = ({ place }: IPanelCard) => {
   const { coords, name } = place
 
+  const { isAuth } = useAuth()
   const dispatch = useAppDispatch()
-  const { removeData, isError } = useDataToFirestore()
+  const { removeData, isError } = useDataToFirestore(isAuth)
 
   function removePlace() {
     removeData(place)

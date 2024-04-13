@@ -1,7 +1,7 @@
 import { PanelCard } from '@components/FavouriteCard'
 import { Input } from '@components/Input/Input'
 import { ScrollMenu } from '@components/ScrollMenu/ScrollMenu'
-import styles from './FavouritePlaces.module.css'
+import styles from './styles.module.css'
 import { useAppSelector } from '@store/hooks'
 import { useAuth } from '@hooks/useAuth'
 import { NotLogIn } from '@components/Warnings/NotLogIn'

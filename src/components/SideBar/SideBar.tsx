@@ -3,18 +3,13 @@ import { SideBarButton } from '@components/SideBarButton/SideBarButton'
 import { useAuth } from '@hooks/useAuth'
 import { removeUser } from '@store/actions/userSlice'
 import { useAppDispatch } from '@store/hooks'
-import { useState } from 'react'
 import { IoBookmark, IoEnter, IoExit, IoSearch } from 'react-icons/io5'
-import { useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import styles from './SideBar.module.css'
-import { SidebarMenu } from './SideBarPanel'
-import { FeaturesPanel } from './SidebarPanels/FavouritesPanel'
-import { SearchMenu } from './SidebarPanels/SearchMenu'
+import { paths } from '@constants/paths'
 
 export const SideBar = () => {
-  const [isOpenSearchMenu, setIsOpenSearchMenu] = useState<boolean>(false)
-  const [isOpenFavouritePanel, setIsOpenFavouritePanel] = useState<boolean>(false)
-
+  const { pathname } = useLocation()
   const navigate = useNavigate()
   const { isAuth } = useAuth()
 
@@ -24,14 +19,12 @@ export const SideBar = () => {
     isAuth ? dispatch(removeUser()) : navigate('/login')
   }
 
-  function openSerchMenu() {
-    setIsOpenFavouritePanel(false)
-    setIsOpenSearchMenu(!isOpenSearchMenu)
+  function openSearchPanel() {
+    pathname === paths.search ? navigate(paths.main) : navigate(paths.search)
   }
 
   function openFavouritePanel() {
-    setIsOpenSearchMenu(false)
-    setIsOpenFavouritePanel(!isOpenFavouritePanel)
+    pathname === paths.favourites ? navigate(paths.main) : navigate(paths.favourites)
   }
 
   return (
@@ -42,25 +35,13 @@ export const SideBar = () => {
             <img src={AppIcon} title='appLogo' />
           </div>
           <div className={styles.upButtons}>
-            <SideBarButton
-              color='#5E7BC7'
-              type='button'
-              style={{ backgroundColor: '#5E7BC7' }}
-              title='search'
-              onClick={openSerchMenu}
-            >
+            <button className={styles.button} onClick={openSearchPanel}>
               <IoSearch size={24} />
-            </SideBarButton>
+            </button>
 
-            <SideBarButton
-              color='#C75E5E'
-              type='button'
-              style={{ backgroundColor: '#C75E5E' }}
-              title='mark'
-              onClick={openFavouritePanel}
-            >
+            <button className={styles.button} onClick={openFavouritePanel}>
               <IoBookmark size={20} />
-            </SideBarButton>
+            </button>
           </div>
         </section>
         <section className={styles.profileContainer}>
@@ -74,8 +55,6 @@ export const SideBar = () => {
           </SideBarButton>
         </section>
       </header>
-      <SidebarMenu isOpen={isOpenSearchMenu} component={<SearchMenu />} />
-      <SidebarMenu isOpen={isOpenFavouritePanel} component={<FeaturesPanel />} />
     </div>
   )
 }

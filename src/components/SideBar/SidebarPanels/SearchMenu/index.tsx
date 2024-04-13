@@ -1,8 +1,7 @@
 import { Input } from '@components/Input/Input'
-import { ScrollMenu } from '@components/ScrollMenu/ScrollMenu'
 import { SearchButton } from '@components/SearchButton/SearchButton'
-import { Categories } from './Categories/Categories'
-import styles from './SearchMenu.module.css'
+import { PlaceNameList } from '../PlaceNamesList'
+import styles from './styles.module.css'
 import { useState } from 'react'
 import { useAppDispatch, useAppSelector } from '@store/hooks'
 import { setRadius, setSearchPlace } from '@store/actions/searchSlice'
@@ -36,14 +35,17 @@ export const SearchMenu = () => {
   return (
     <div className={styles.searchMenu}>
       <div>
-        <div className={styles.inputSearch}>
+        <div>
           <Input placeholder='Место, адрес.... ' />
         </div>
-        <div className={styles.settingsContainer}>
+        <div>
           <h3>Искать: </h3>
-          <ScrollMenu>
-            <Categories places={places} handleChange={handleClickCategories} />
-          </ScrollMenu>
+          <div className={styles.categories}>
+            <PlaceNameList places={places} handleChange={handleClickCategories} />
+          </div>
+        </div>
+
+        <div>
           <h3>В радиусе:</h3>
           <div className={styles.inputRadiusContainer}>
             <div className={styles.inputRadius}>

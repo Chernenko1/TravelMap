@@ -2,7 +2,13 @@
   cursor: pointer;
 }
 
-.categoriesContainer {
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.categories {
   position: relative;
   display: flex;
   align-items: center;
@@ -10,11 +16,13 @@
   z-index: -1;
 }
 
-.categoriesContainer:hover > p {
-  color: rgb(155, 155, 155);
+.categoriesContainer {
+  height: 100%;
+  border: solid gray 3px;
+  border-radius: 10px;
 }
 
-.categoriesContainer > p {
+.categories > p {
   font-family: 'MontRegular';
   font-size: 14px;
 }
@@ -24,6 +32,10 @@
   height: 30px;
 }
 
-.lightContainer {
+.noSelected {
   background-color: rgba(255, 255, 255, 0.5);
+}
+
+.noSelected:hover {
+  background-color: rgba(230, 230, 230, 0);
 }

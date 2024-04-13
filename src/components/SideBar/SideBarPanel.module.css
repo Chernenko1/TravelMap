@@ -1,8 +1,0 @@
-.sideBarMenu {
-  width: max-content;
-  height: 100vh;
-  border-left: solid;
-  border-width: 3px;
-  border-color: rgb(211, 211, 211);
-  box-sizing: border-box;
-}

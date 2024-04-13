@@ -1,3 +1,4 @@
+import { ScrollMenu } from '@components/ScrollMenu/ScrollMenu'
 import styles from './Categories.module.css'
 import { SEARCH_CATEGORIES } from '@constants/categories'
 
@@ -8,21 +9,23 @@ interface ICategories {
 
 export const Categories = ({ places, handleChange }: ICategories) => {
   return (
-    <>
-      {SEARCH_CATEGORIES.map(({ title, icon, value }) => {
-        return (
-          <div
-            className={!places.includes(value) ? styles.lightContainer : ''}
-            onClick={() => handleChange(value)}
-            key={title}
-          >
-            <div className={styles.categoriesContainer}>
-              <img src={icon} className={styles.icons} />
-              <p>{title}</p>
-            </div>
-          </div>
-        )
-      })}
-    </>
+    <ScrollMenu>
+      <ul>
+        {SEARCH_CATEGORIES.map(({ title, icon, value }) => {
+          return (
+            <li
+              className={!places.includes(value) ? styles.noSelected : styles.selected}
+              onClick={() => handleChange(value)}
+              key={title}
+            >
+              <div className={styles.categories}>
+                <img src={icon} className={styles.icons} />
+                <p>{title}</p>
+              </div>
+            </li>
+          )
+        })}
+      </ul>
+    </ScrollMenu>
   )
 }

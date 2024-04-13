@@ -1,7 +1,6 @@
 import { Input } from '@components/Input/Input'
-import { ScrollMenu } from '@components/ScrollMenu/ScrollMenu'
 import { SearchButton } from '@components/SearchButton/SearchButton'
-import { Categories } from './Categories/Categories'
+import { Categories } from './PlaceNamesList'
 import styles from './SearchMenu.module.css'
 import { useState } from 'react'
 import { useAppDispatch, useAppSelector } from '@store/hooks'

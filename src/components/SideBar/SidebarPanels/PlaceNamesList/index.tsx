@@ -1,5 +1,5 @@
 import { ScrollMenu } from '@components/ScrollMenu/ScrollMenu'
-import styles from './Categories.module.css'
+import styles from './styles.module.css'
 import { SEARCH_CATEGORIES } from '@constants/categories'
 
 interface ICategories {

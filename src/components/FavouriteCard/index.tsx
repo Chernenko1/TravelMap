@@ -1,5 +1,5 @@
 import noImage from '@assets/images/noImage_2.jpg'
-import styles from './PanelCard.module.css'
+import styles from './styles.module.css'
 import { IoBookmark, IoCaretForward } from 'react-icons/io5'
 import { useAppDispatch } from '@store/hooks'
 import { useDataToFirestore } from '@hooks/useDataToFirestore'

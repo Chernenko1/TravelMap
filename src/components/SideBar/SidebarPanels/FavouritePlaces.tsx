@@ -1,12 +1,12 @@
-import { PanelCard } from '@components/FavouritesCards/PanelCard'
+import { PanelCard } from '@components/FavouriteCard'
 import { Input } from '@components/Input/Input'
 import { ScrollMenu } from '@components/ScrollMenu/ScrollMenu'
-import styles from './FavouritesPanel.module.css'
+import styles from './FavouritePlaces.module.css'
 import { useAppSelector } from '@store/hooks'
 import { useAuth } from '@hooks/useAuth'
 import { NotLogIn } from '@components/Warnings/NotLogIn'
 
-export const FeaturesPanel = () => {
+export const FavouritesPanel = () => {
   const places = useAppSelector((state) => state.favPlaces.places)
   const { isAuth } = useAuth()
 
@@ -33,11 +33,3 @@ export const FeaturesPanel = () => {
     </div>
   )
 }
-
-// <ScrollMenu>
-//  <div className={styles.cards}>
-//    {places.map((place) => (
-//     <PanelCard key={place.placeId} place={place} />
-//   ))}
-//  </div>
-//  </ScrollMenu>

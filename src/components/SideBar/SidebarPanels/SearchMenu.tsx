@@ -41,9 +41,7 @@ export const SearchMenu = () => {
         </div>
         <div className={styles.settingsContainer}>
           <h3>Искать: </h3>
-          <ScrollMenu>
-            <Categories places={places} handleChange={handleClickCategories} />
-          </ScrollMenu>
+          <Categories places={places} handleChange={handleClickCategories} />
           <h3>В радиусе:</h3>
           <div className={styles.inputRadiusContainer}>
             <div className={styles.inputRadius}>

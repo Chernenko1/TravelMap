@@ -1,19 +1,13 @@
 import '@components/Firebase/index'
-import { LoginForm } from '@pages/Login/LoginForm'
-import { MainPage } from '@pages/Main/MainPage'
-import { RegistrationForm } from '@pages/Registration/RegistrationFrom'
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { RouterProvider } from 'react-router-dom'
 import './App.css'
+import { router } from '@constants/routes'
 
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path='/' element={<MainPage />} />
-        <Route path='/login' element={<LoginForm />} />
-        <Route path='/registration' element={<RegistrationForm />} />
-      </Routes>
-    </BrowserRouter>
+    <>
+      <RouterProvider router={router} />
+    </>
   )
 }
 

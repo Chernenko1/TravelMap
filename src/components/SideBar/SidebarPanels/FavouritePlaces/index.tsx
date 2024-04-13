@@ -1,13 +1,10 @@
-import { PanelCard } from '@components/FavouriteCard'
 import { Input } from '@components/Input/Input'
-import { ScrollMenu } from '@components/ScrollMenu/ScrollMenu'
 import styles from './styles.module.css'
-import { useAppSelector } from '@store/hooks'
 import { useAuth } from '@hooks/useAuth'
 import { NotLogIn } from '@components/Warnings/NotLogIn'
+import { FavouriteCardList } from '../FavouriteCardList'
 
 export const FavouritesPanel = () => {
-  const places = useAppSelector((state) => state.favPlaces.places)
   const { isAuth } = useAuth()
 
   return (
@@ -15,20 +12,9 @@ export const FavouritesPanel = () => {
       <div className={styles.inputSearch}>
         <Input placeholder='Место, адрес.... ' />
       </div>
-
       <div className={styles.infoContainer}>
         <p>Избранное: </p>
-        {isAuth ? (
-          <ScrollMenu>
-            <div className={styles.cards}>
-              {places.map((place) => (
-                <PanelCard key={place.placeId} place={place} />
-              ))}
-            </div>
-          </ScrollMenu>
-        ) : (
-          <NotLogIn />
-        )}
+        {isAuth ? <FavouriteCardList /> : <NotLogIn />}
       </div>
     </div>
   )

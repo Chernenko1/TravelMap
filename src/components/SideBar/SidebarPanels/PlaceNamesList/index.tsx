@@ -7,7 +7,7 @@ interface ICategories {
   handleChange: (value: string) => void
 }
 
-export const Categories = ({ places, handleChange }: ICategories) => {
+export const PlaceNameList = ({ places, handleChange }: ICategories) => {
   return (
     <ScrollMenu>
       <ul>

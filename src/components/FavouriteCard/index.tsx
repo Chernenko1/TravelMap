@@ -11,7 +11,7 @@ interface IPanelCard {
   place: Place
 }
 
-export const PanelCard = ({ place }: IPanelCard) => {
+export const FavouriteCard = ({ place }: IPanelCard) => {
   const { coords, name } = place
 
   const { isAuth } = useAuth()
@@ -32,7 +32,7 @@ export const PanelCard = ({ place }: IPanelCard) => {
   const limit = 200
 
   return (
-    <div className={styles.panelCard}>
+    <li className={styles.panelCard}>
       <div className={styles.header}>
         <img src={noImage} className={styles.image} />
         <p>{name}</p>
@@ -46,6 +46,6 @@ export const PanelCard = ({ place }: IPanelCard) => {
         <IoBookmark size={24} color='#C75E5E' onClick={removePlace} />
         <IoCaretForward size={24} onClick={moveToPlace} />
       </div>
-    </div>
+    </li>
   )
 }

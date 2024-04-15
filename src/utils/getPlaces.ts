@@ -15,3 +15,13 @@ export async function getPlaces(lat: number, lng: number, radius: number, catego
     console.log('GeoAPIERR: ', error)
   }
 }
+
+export async function getPlace(id: string) {
+  try {
+    const { data }: { data: GeoapifyResponse } = await axios.get(
+      `https://api.geoapify.com/v2/place-details?id=${id}&apiKey=${env.VITE_GEO_API_KEY}
+      `,
+    )
+    return data.features[0].properties
+  } catch (error) {}
+}

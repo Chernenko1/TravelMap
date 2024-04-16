@@ -20,6 +20,7 @@
   font-size: 14px;
   border: solid 3px;
   border-radius: 5px;
+  cursor: pointer;
 }
 
 .placeCardContainer {

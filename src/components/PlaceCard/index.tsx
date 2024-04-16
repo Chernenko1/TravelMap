@@ -3,20 +3,37 @@ import { Input } from '@components/Input/Input'
 import { getPlace } from '@utils/getPlaces'
 import { useEffect, useState } from 'react'
 import { IoBookmark, IoCaretBack, IoLocationSharp } from 'react-icons/io5'
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 import styles from './styles.module.css'
+import { useAppDispatch, useAppSelector } from '@store/hooks'
+import { clearRouteCoordinates, setRouteCoords } from '@store/actions/searchSlice'
 
 export const PlaceCard = () => {
   const [place, setPlace] = useState<Properties>()
+
   const { id } = useParams()
+  const navigate = useNavigate()
+  const dispatch = useAppDispatch()
+  const userCoords = useAppSelector((state) => state.search.userCoords)
 
   async function searchPlace() {
     let response = await getPlace(id as string)
     setPlace(response)
   }
 
+  function setRoute() {
+    dispatch(setRouteCoords({ from: userCoords, to: { lat: place?.lat as number, lng: place?.lon as number } }))
+  }
+
+  function goBack() {
+    navigate(-1)
+  }
+
   useEffect(() => {
     searchPlace()
+    return () => {
+      dispatch(clearRouteCoordinates())
+    }
   }, [])
 
   const description =
@@ -29,7 +46,9 @@ export const PlaceCard = () => {
       </div>
 
       <div className={styles.header}>
-        <IoCaretBack size={22} />
+        <button className={styles.backButton} onClick={goBack} type='button'>
+          <IoCaretBack size={22} />
+        </button>
         <p>Избранное</p>
       </div>
 
@@ -40,14 +59,14 @@ export const PlaceCard = () => {
           <p className={styles.description}>{description}</p>
 
           <div className={styles.buttons}>
-            <div className={styles.favButton}>
-              <IoBookmark size={20} />
+            <button className={styles.favButton} type='button'>
+              <IoBookmark size={24} />
               <p>Сохранено</p>
-            </div>
-            <div className={styles.routeButton}>
-              <IoLocationSharp size={20} />
+            </button>
+            <button className={styles.routeButton} onClick={setRoute} type='button'>
+              <IoLocationSharp size={24} />
               <p>Маршрут</p>
-            </div>
+            </button>
           </div>
         </div>
       </div>

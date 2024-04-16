@@ -13,10 +13,11 @@
 
 .favButton,
 .routeButton {
-  height: 40px;
-  padding: 10px 22px;
+  height: 50px;
   justify-content: center;
   gap: 12px;
+  font-weight: 600;
+  font-size: 14px;
   border: solid 3px;
   border-radius: 5px;
 }
@@ -67,21 +68,19 @@
 .buttons {
   position: relative;
   display: flex;
+  justify-content: space-between;
   align-items: center;
   top: 15px;
-  gap: 12px;
-  font-weight: 600;
-  font-size: 14px;
   line-height: 17.89px;
 }
 
 .favButton {
-  width: 154px;
+  width: 174px;
   color: #c4c4c4;
 }
 
 .routeButton {
-  width: 132px;
+  width: 154px;
   background-color: #5e7bc7;
   border-color: none;
   color: white;
@@ -94,4 +93,13 @@
 
 .routeButton:hover {
   border-color: #c4c4c4;
+}
+
+.backButton {
+  border: none;
+  background-color: transparent;
+}
+
+.backButton * {
+  cursor: pointer;
 }

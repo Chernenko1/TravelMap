@@ -8,6 +8,8 @@
   width: 400px;
   height: 100vh;
   padding: 20px 20px;
+  /* border: solid red; */
+  border-left: solid #c4c4c4 3px;
   box-sizing: border-box;
 }
 
@@ -16,10 +18,28 @@
 }
 
 .infoContainer {
-  height: 90%;
+  height: 87%;
 }
 
 .infoContainer > p {
   font-family: 'MontBold';
   font-size: 20px;
+}
+
+@media (max-width: 1023px) {
+  .featuresPanel {
+    width: 375px;
+  }
+}
+
+@media (max-width: 768px) {
+  .featuresPanel {
+    width: 320px;
+  }
+}
+@media (max-width: 425px) {
+  .featuresPanel {
+    width: 200px;
+    padding: 5px;
+  }
 }

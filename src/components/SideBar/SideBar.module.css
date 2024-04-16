@@ -72,3 +72,38 @@
 .profileButton {
   background-color: #32cd32;
 }
+
+@media (max-width: 768px) {
+  .sideBar {
+    width: 80px;
+  }
+}
+
+@media (max-width: 425px) {
+  .sideBar {
+    width: 50px;
+    padding: 10px 0;
+    box-sizing: border-box;
+    align-items: center;
+    flex-direction: column-reverse;
+  }
+  .buttonSearch,
+  .buttonFavourites,
+  .buttonSearchOn,
+  .buttonFavouritesOn,
+  .profileButton {
+    width: 40px;
+    height: 40px;
+  }
+  .upContainer {
+    flex-direction: column-reverse;
+    justify-content: space-around;
+  }
+  .appLogo > img {
+    width: 30px;
+    height: 30px;
+  }
+  .appLogo {
+    margin-bottom: 5px;
+  }
+}

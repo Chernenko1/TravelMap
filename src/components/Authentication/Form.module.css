@@ -15,7 +15,7 @@
 }
 
 .loginForm {
-  width: 100%;
+  width: 90%;
   row-gap: 50px;
 }
 
@@ -34,7 +34,6 @@
   border-color: rgb(206, 206, 206);
   border-width: 2px;
   border-radius: 15px;
-  font-family: 'MontRegular';
   font-size: 24px;
 }
 
@@ -60,7 +59,6 @@
   position: relative;
   max-width: max-content;
   padding: 0px 15px;
-  /* margin-top: 10px; */
   top: 10px;
   left: 30px;
 }
@@ -80,4 +78,14 @@
 
 .newUser:hover > a {
   color: red;
+}
+
+@media (max-width: 425px) {
+  .form {
+    width: 250px;
+    padding: 0;
+  }
+  .button {
+    width: 250px;
+  }
 }

@@ -12,3 +12,15 @@
 .button:active {
   border: solid 3px #808080;
 }
+
+@media (max-width: 1024px) {
+  .button {
+    width: 250px;
+  }
+}
+
+@media (max-width: 425px) {
+  .button {
+    width: 150px;
+  }
+}

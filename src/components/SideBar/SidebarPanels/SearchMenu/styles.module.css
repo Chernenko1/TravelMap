@@ -32,5 +32,25 @@ h3 {
 
 .categories {
   width: 350px;
-  height: 490px;
+  height: 440px;
+}
+
+@media (max-width: 1024px) {
+  .searchMenu {
+    width: 300px;
+  }
+  .categories {
+    width: 250px;
+    height: 320px;
+  }
+}
+
+@media (max-width: 425px) {
+  .searchMenu {
+    width: 200px;
+  }
+  .categories {
+    width: 150px;
+    height: 250px;
+  }
 }

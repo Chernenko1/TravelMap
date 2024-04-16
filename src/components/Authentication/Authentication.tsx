@@ -10,7 +10,7 @@ export const Authentication = ({ children }: IAuth) => {
   return (
     <div className={styles.authWrapper}>
       <div className={styles.authContainer}>{children}</div>
-      <div className={styles.authImg}>
+      <div className={styles.authImage}>
         <img src={AuthImage} />
       </div>
     </div>

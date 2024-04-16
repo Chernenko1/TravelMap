@@ -43,3 +43,36 @@
   font-weight: 600;
   line-height: 12px;
 }
+
+@media (max-width: 1024px) {
+  .panelCard {
+    width: 300px;
+    height: 250px;
+  }
+}
+
+@media (max-width: 768px) {
+  .panelCard {
+    width: 250px;
+    height: 250px;
+  }
+}
+
+@media (max-width: 425px) {
+  .panelCard {
+    width: 160px;
+    height: 350px;
+    padding: 0;
+    justify-content: space-around;
+  }
+  .header {
+    flex-direction: column;
+  }
+  .header > p {
+    margin: 0;
+  }
+  .description > p {
+    font-size: 12px;
+    margin: 0;
+  }
+}

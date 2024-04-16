@@ -2,12 +2,14 @@ import { map } from '@constants/map'
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { RootState } from '@store/store'
 
+type Coords = { lat: number; lng: number }
 interface ISearch {
   searchPlaces: string[]
   places: Feature[]
   radius: string
-  userCoords: { lat: number; lng: number }
-  coordsToMove: { lat: number; lng: number }
+  userCoords: Coords
+  coordsToMove: Coords
+  routeCoords: undefined | [Coords, Coords]
 }
 
 const initialState: ISearch = {
@@ -16,6 +18,7 @@ const initialState: ISearch = {
   radius: '1000',
   userCoords: map.INITILA_COORDINATES,
   coordsToMove: map.INITILA_COORDINATES,
+  routeCoords: undefined,
 }
 
 export const searchSlice = createSlice({
@@ -37,10 +40,24 @@ export const searchSlice = createSlice({
     setFoundPlaces: (state, actions) => {
       state.places = actions.payload
     },
+    setRouteCoords: (state, actions: PayloadAction<{ from: Coords; to: Coords }>) => {
+      state.routeCoords = [actions.payload.from, actions.payload.to]
+    },
+    clearRouteCoordinates: (state) => {
+      state.routeCoords = undefined
+    },
   },
 })
 
-export const { setSearchPlace, setRadius, setMoveCoords, setUserCoords, setFoundPlaces } = searchSlice.actions
+export const {
+  setSearchPlace,
+  setRadius,
+  setMoveCoords,
+  setUserCoords,
+  setFoundPlaces,
+  clearRouteCoordinates,
+  setRouteCoords,
+} = searchSlice.actions
 
 export const search = (state: RootState) => state.search
 

@@ -8,15 +8,19 @@ import { LocationButton } from '@components/LocationButton/LocationButton'
 import { MapController } from './MapController'
 import { FeaturesPlaces } from './FeaturesPlaces'
 import { setFoundPlaces } from '@store/actions/searchSlice'
+import RoutingMachine from './RoutingMachine'
 
 export const Map = () => {
-  const { userCoords, radius, searchPlaces, coordsToMove, places } = useAppSelector((state) => state.search)
+  const { userCoords, radius, searchPlaces, coordsToMove, places, routeCoords } = useAppSelector(
+    (state) => state.search,
+  )
 
   const dispatch = useAppDispatch()
 
   async function searchPlace() {
     let response = await getPlaces(userCoords?.lat as number, userCoords?.lng as number, +radius, searchPlaces)
-    dispatch(setFoundPlaces(response))
+    let data = response?.filter((item) => item.properties.name !== undefined)
+    dispatch(setFoundPlaces(data))
   }
 
   useEffect(() => {
@@ -39,6 +43,7 @@ export const Map = () => {
           <Circle center={userCoords} radius={+radius} />
           <Marker position={userCoords} />
           {places && <FeaturesPlaces features={places} />}
+          {routeCoords && <RoutingMachine way={routeCoords} />}
           <MapController coords={coordsToMove} />
           <div className={styles.locationButtons}>
             <LocationButton />

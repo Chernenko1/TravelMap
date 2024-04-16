@@ -4,4 +4,5 @@ export const paths = {
   favourites: '/favourites',
   login: '/login',
   registration: '/registration',
+  place: '/favourites/:id',
 }

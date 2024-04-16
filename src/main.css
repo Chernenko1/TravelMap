@@ -6,6 +6,10 @@ body {
   margin: 0;
 }
 
+.leaflet-routing-alternatives-container {
+  display: none;
+}
+
 @font-face {
   font-family: 'MontBlack';
   src: url('./fonts/Mont/Mont-Black.eot');

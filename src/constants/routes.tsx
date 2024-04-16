@@ -6,6 +6,7 @@ import { SearchMenu } from '@components/SideBar/SidebarPanels/SearchMenu'
 import { FavouritesPanel } from '@components/SideBar/SidebarPanels/FavouritePlaces'
 import { LoginForm } from '@pages/Login/LoginForm'
 import { RegistrationForm } from '@pages/Registration/RegistrationFrom'
+import { PlaceCard } from '@components/PlaceCard'
 
 export const router = createBrowserRouter([
   {
@@ -21,6 +22,7 @@ export const router = createBrowserRouter([
       { path: paths.main, element: <></> },
       { path: paths.search, element: <SearchMenu /> },
       { path: paths.favourites, element: <FavouritesPanel /> },
+      { path: paths.place, element: <PlaceCard /> },
     ],
   },
   {

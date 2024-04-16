@@ -28,19 +28,47 @@
   row-gap: 10px;
 }
 
-.button {
+.buttonSearch,
+.buttonFavourites,
+.buttonSearchOn,
+.buttonFavouritesOn,
+.profileButton {
   width: 60px;
   height: 60px;
   border-radius: 6px;
   border: none;
   color: white;
+  cursor: pointer;
 }
 
-.button:hover {
+.buttonSearch {
+  background-color: #5e7bc7;
+}
+
+.buttonSearchOn {
+  color: #5e7bc7;
+  background-color: white;
   border: solid 3px #c4c4c4;
 }
 
-.button:active {
-  border: solid 3px #808080;
+.buttonSearch:hover {
+  border: solid 3px #c4c4c4;
+}
+
+.buttonFavourites {
+  background-color: #c75e5e;
+}
+
+.buttonFavouritesOn {
+  color: #c75e5e;
   background-color: white;
+  border: solid 3px #c4c4c4;
+}
+
+.buttonFavourites:hover {
+  border: solid 3px #c4c4c4;
+}
+
+.profileButton {
+  background-color: #32cd32;
 }

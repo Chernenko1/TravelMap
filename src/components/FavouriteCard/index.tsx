@@ -6,13 +6,14 @@ import { useDataToFirestore } from '@hooks/useDataToFirestore'
 import { deleteFavPlace } from '@store/actions/favPlaces'
 import { setMoveCoords } from '@store/actions/searchSlice'
 import { useAuth } from '@hooks/useAuth'
+import { Link } from 'react-router-dom'
 
 interface IPanelCard {
   place: Place
 }
 
 export const FavouriteCard = ({ place }: IPanelCard) => {
-  const { coords, name } = place
+  const { coords, name, placeId } = place
 
   const { isAuth } = useAuth()
   const dispatch = useAppDispatch()
@@ -44,7 +45,9 @@ export const FavouriteCard = ({ place }: IPanelCard) => {
 
       <div className={styles.buttons}>
         <IoBookmark size={24} color='#C75E5E' onClick={removePlace} />
-        <IoCaretForward size={24} onClick={moveToPlace} />
+        <Link to={`/favourites/${placeId}`} color='black'>
+          <IoCaretForward size={24} onClick={moveToPlace} />
+        </Link>
       </div>
     </li>
   )

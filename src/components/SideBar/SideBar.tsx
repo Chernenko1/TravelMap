@@ -1,5 +1,4 @@
 import AppIcon from '@assets/svg/AppIcon.svg'
-import { SideBarButton } from '@components/SideBarButton/SideBarButton'
 import { useAuth } from '@hooks/useAuth'
 import { removeUser } from '@store/actions/userSlice'
 import { useAppDispatch } from '@store/hooks'
@@ -55,14 +54,9 @@ export const SideBar = () => {
           </div>
         </section>
         <section className={styles.profileContainer}>
-          <SideBarButton
-            title='prof'
-            type='button'
-            style={{ backgroundColor: '#32CD32' }}
-            onClick={handleProfileButton}
-          >
+          <button title='prof' type='button' className={styles.profileButton} onClick={handleProfileButton}>
             {isAuth ? <IoExit size={24} /> : <IoEnter size={24} />}
-          </SideBarButton>
+          </button>
         </section>
       </header>
     </div>

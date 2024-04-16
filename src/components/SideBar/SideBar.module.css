@@ -28,12 +28,17 @@
   row-gap: 10px;
 }
 
-button {
+.buttonSearch,
+.buttonFavourites,
+.buttonSearchOn,
+.buttonFavouritesOn,
+.profileButton {
   width: 60px;
   height: 60px;
   border-radius: 6px;
   border: none;
   color: white;
+  cursor: pointer;
 }
 
 .buttonSearch {
@@ -62,4 +67,8 @@ button {
 
 .buttonFavourites:hover {
   border: solid 3px #c4c4c4;
+}
+
+.profileButton {
+  background-color: #32cd32;
 }

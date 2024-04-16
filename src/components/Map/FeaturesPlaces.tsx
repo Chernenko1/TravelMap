@@ -25,7 +25,6 @@ export const FeaturesPlaces = ({ features }: IFeaturesPlaces) => {
           <Marker position={{ lat: properties.lat, lng: properties.lon }} icon={icon} key={ind}>
             <Popup>
               <MarkerDescription
-                distance={properties.distance}
                 place={{
                   name: properties.name || 'Название неизвестно',
                   address: properties.address_line2,

@@ -35,11 +35,21 @@ export const SideBar = () => {
             <img src={AppIcon} title='appLogo' />
           </div>
           <div className={styles.upButtons}>
-            <button className={styles.button} onClick={openSearchPanel}>
+            <button
+              className={pathname === paths.search ? styles.buttonSearchOn : styles.buttonSearch}
+              onClick={openSearchPanel}
+              type='button'
+              title='меню поиска'
+            >
               <IoSearch size={24} />
             </button>
 
-            <button className={styles.button} onClick={openFavouritePanel}>
+            <button
+              className={pathname === paths.favourites ? styles.buttonFavouritesOn : styles.buttonFavourites}
+              onClick={openFavouritePanel}
+              type='button'
+              title='избранное'
+            >
               <IoBookmark size={20} />
             </button>
           </div>

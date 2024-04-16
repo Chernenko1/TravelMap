@@ -47,7 +47,7 @@ export const PlaceCard = () => {
 
       <div className={styles.header}>
         <button className={styles.backButton} onClick={goBack} type='button'>
-          <IoCaretBack size={22} />
+          <IoCaretBack size={22} color='black' />
         </button>
         <p>Избранное</p>
       </div>

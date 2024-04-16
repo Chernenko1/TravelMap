@@ -18,3 +18,13 @@
   width: 150px;
   height: 100px;
 }
+
+.favIcon * {
+  cursor: pointer;
+}
+
+.buttonRoute {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}

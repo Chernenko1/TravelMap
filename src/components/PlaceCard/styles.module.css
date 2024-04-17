@@ -62,10 +62,10 @@
 }
 
 .buttons {
-  position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: 100%;
   top: 15px;
   line-height: 17.89px;
 }
@@ -94,6 +94,7 @@
 .backButton {
   border: none;
   background-color: transparent;
+  cursor: pointer;
 }
 
 @media (max-width: 1024px) {

@@ -44,9 +44,11 @@ export const FavouriteCard = ({ place }: IPanelCard) => {
       </div>
 
       <div className={styles.buttons}>
-        <IoBookmark size={24} color='#C75E5E' onClick={removePlace} />
-        <Link to={`/favourites/${placeId}`} color='black'>
-          <IoCaretForward size={24} onClick={moveToPlace} />
+        <button className={styles.favButton} onClick={removePlace}>
+          <IoBookmark size={24} color='#C75E5E' />
+        </button>
+        <Link to={`/favourites/${placeId}`}>
+          <IoCaretForward size={24} onClick={moveToPlace} color='black' />
         </Link>
       </div>
     </li>

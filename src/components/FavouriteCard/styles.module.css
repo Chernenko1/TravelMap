@@ -36,6 +36,12 @@
   justify-content: space-between;
 }
 
+.favButton {
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+}
+
 .description > p {
   font-family: 'Mont';
   word-wrap: break-word;

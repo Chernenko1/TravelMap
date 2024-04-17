@@ -8,7 +8,6 @@
   width: 400px;
   height: 100vh;
   padding: 20px 20px;
-  /* border: solid red; */
   border-left: solid #c4c4c4 3px;
   box-sizing: border-box;
 }
@@ -22,7 +21,8 @@
 }
 
 .infoContainer > p {
-  font-family: 'MontBold';
+  font-family: 'Mont';
+  font-weight: bold;
   font-size: 20px;
 }
 

@@ -20,7 +20,8 @@ ul {
 }
 
 .categories > p {
-  font-family: 'MontRegular';
+  font-family: 'Mont';
+  font-weight: normal;
   font-size: 14px;
 }
 

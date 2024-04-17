@@ -4,7 +4,8 @@
 }
 
 h3 {
-  font-family: 'MontBold';
+  font-family: 'Mont';
+  font-weight: bold;
   font-size: 20px;
 }
 
@@ -26,7 +27,8 @@ h3 {
 }
 
 .inputRadiusContainer > p {
-  font-family: 'MontBold';
+  font-family: 'Mont';
+  font-weight: bold;
   font-size: 15px;
 }
 

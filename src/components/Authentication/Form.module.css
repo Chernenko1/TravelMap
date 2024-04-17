@@ -10,8 +10,10 @@
 .button,
 .errorInForm,
 .resError,
-.newUser {
-  font-family: 'MontRegular';
+.newUser,
+.headerTitle {
+  font-family: 'Mont';
+  font-weight: normal;
 }
 
 .loginForm {
@@ -20,7 +22,7 @@
 }
 
 .headerTitle {
-  font-family: 'MontBold';
+  font-weight: bold;
 }
 
 .formContainer {

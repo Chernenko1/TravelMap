@@ -6,7 +6,8 @@
 }
 
 .footer > p {
-  font-family: 'MontRegular';
+  font-family: 'Mont';
+  font-weight: normal;
 }
 
 .imageContainer {

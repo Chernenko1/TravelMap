@@ -1,6 +1,5 @@
 import noImage from '@assets/images/noImage_2.jpg'
 import { Input } from '@components/Input/Input'
-import { getPlace } from '@utils/getPlaces'
 import { useEffect, useState } from 'react'
 import { IoBookmark, IoCaretBack, IoLocationSharp } from 'react-icons/io5'
 import { useParams, useNavigate } from 'react-router-dom'
@@ -8,31 +7,38 @@ import styles from './styles.module.css'
 import { useAppDispatch, useAppSelector } from '@store/hooks'
 import { clearRouteCoordinates, setRouteCoords } from '@store/actions/searchSlice'
 import { ScrollMenu } from '@components/ScrollMenu/ScrollMenu'
+import { useDataToFirestore } from '@hooks/useDataToFirestore'
+import { deleteFavPlace } from '@store/actions/favPlaces'
 
 export const PlaceCard = () => {
-  const [place, setPlace] = useState<Properties>()
   const [windowSize, setWindowSize] = useState(window.innerWidth)
 
   const { id } = useParams()
   const navigate = useNavigate()
   const dispatch = useAppDispatch()
+  const { removeData, isError } = useDataToFirestore(true)
   const userCoords = useAppSelector((state) => state.search.userCoords)
-
-  async function searchPlace() {
-    let response = await getPlace(id as string)
-    setPlace(response)
-  }
+  const place = useAppSelector((state) => state.favPlaces.places).find((item) => item.placeId === id) as Place
 
   function setRoute() {
-    dispatch(setRouteCoords({ from: userCoords, to: { lat: place?.lat as number, lng: place?.lon as number } }))
+    dispatch(
+      setRouteCoords({ from: userCoords, to: { lat: place?.coords.lat as number, lng: place?.coords.lon as number } }),
+    )
   }
 
   function goBack() {
     navigate(-1)
   }
 
+  async function removePlaceFromFavourites() {
+    removeData(place)
+    if (!isError) {
+      dispatch(deleteFavPlace(place.placeId))
+      goBack()
+    }
+  }
+
   useEffect(() => {
-    searchPlace()
     return () => {
       dispatch(clearRouteCoordinates())
     }
@@ -75,7 +81,7 @@ export const PlaceCard = () => {
         )}
 
         <div className={styles.buttons}>
-          <button className={styles.favButton} type='button'>
+          <button className={styles.favButton} type='button' onClick={removePlaceFromFavourites}>
             <IoBookmark size={24} className={styles.icon} />
             <p>Сохранено</p>
           </button>

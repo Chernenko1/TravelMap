@@ -17,7 +17,7 @@ import History from '@assets/svg/history.svg'
 import Adults from '@assets/svg/18+.svg'
 import Culture from '@assets/svg/culture.svg'
 
-export const SEARCH_CATEGORIES: { title: string; value: string; icon: string }[] = [
+export const categories: { title: string; value: string; icon: string }[] = [
   {
     icon: Accommodation,
     title: 'Место для сна',
@@ -52,7 +52,7 @@ export const SEARCH_CATEGORIES: { title: string; value: string; icon: string }[]
     icon: Shops,
     title: 'Магазины',
     value:
-      'commercial.food_and_drink, commercial.supermarket,commercial.marketplace,commercial.shopping_mall,commercial.discount_store,commercial.kiosk',
+      'commercial.food_and_drink,commercial.supermarket,commercial.marketplace,commercial.shopping_mall,commercial.discount_store,commercial.kiosk',
   },
   {
     icon: Food,
@@ -103,7 +103,7 @@ export const SEARCH_CATEGORIES: { title: string; value: string; icon: string }[]
   {
     icon: Adults,
     title: '18+',
-    value: 'commercial.erotic, adult',
+    value: 'commercial.erotic,adult',
   },
   {
     icon: Culture,

@@ -1,6 +1,6 @@
 import { ScrollMenu } from '@components/ScrollMenu/ScrollMenu'
 import styles from './styles.module.css'
-import { SEARCH_CATEGORIES } from '@constants/categories'
+import { categories } from '@constants/categories'
 
 interface ICategories {
   places: string[]
@@ -11,7 +11,7 @@ export const PlaceNameList = ({ places, handleChange }: ICategories) => {
   return (
     <ScrollMenu>
       <ul>
-        {SEARCH_CATEGORIES.map(({ title, icon, value }) => {
+        {categories.map(({ title, icon, value }) => {
           return (
             <li
               className={!places.includes(value) ? styles.noSelected : styles.selected}

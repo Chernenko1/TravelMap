@@ -7,10 +7,6 @@
   align-items: center;
 }
 
-.placeCardContainer * {
-  cursor: default;
-}
-
 .favButton,
 .routeButton {
   height: 50px;
@@ -42,8 +38,7 @@
 .placeCard {
   flex-direction: column;
   padding: 20px 25px;
-  width: 440px;
-  height: 714px;
+  height: 654px;
   border: solid #c4c4c4 3px;
   border-radius: 10px;
   box-sizing: border-box;
@@ -101,6 +96,59 @@
   background-color: transparent;
 }
 
-.backButton * {
-  cursor: pointer;
+@media (max-width: 1024px) {
+  .placeCardContainer {
+    padding: 20px 25px;
+    width: 400px;
+  }
+  .image {
+    width: 300px;
+    height: 200px;
+  }
+}
+
+@media (max-width: 768px) {
+  .placeCard {
+    padding: 10px 5px;
+    width: 240px;
+  }
+  .image {
+    width: 120px;
+    height: 99px;
+  }
+  .placeCard h3 {
+    font-size: 14px;
+    margin: 5px;
+  }
+  .buttons {
+    flex-direction: column;
+    justify-content: space-between;
+    row-gap: 10px;
+  }
+}
+
+@media (max-width: 425px) {
+  .placeCard {
+    height: 87%;
+    padding: 0;
+    justify-content: space-around;
+  }
+  .header > p {
+    font-size: 15px;
+  }
+  .buttons {
+    padding: 5px;
+  }
+  .favButton,
+  .routeButton {
+    height: 30px;
+    width: 100px;
+  }
+  .buttons {
+    top: 5px;
+    row-gap: 0;
+  }
+  .icon {
+    display: none;
+  }
 }

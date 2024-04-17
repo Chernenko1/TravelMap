@@ -7,9 +7,11 @@ import { useParams, useNavigate } from 'react-router-dom'
 import styles from './styles.module.css'
 import { useAppDispatch, useAppSelector } from '@store/hooks'
 import { clearRouteCoordinates, setRouteCoords } from '@store/actions/searchSlice'
+import { ScrollMenu } from '@components/ScrollMenu/ScrollMenu'
 
 export const PlaceCard = () => {
   const [place, setPlace] = useState<Properties>()
+  const [windowSize, setWindowSize] = useState(window.innerWidth)
 
   const { id } = useParams()
   const navigate = useNavigate()
@@ -36,6 +38,14 @@ export const PlaceCard = () => {
     }
   }, [])
 
+  useEffect(() => {
+    const handleResize = () => setWindowSize(window.innerWidth)
+    window.addEventListener('resize', handleResize)
+    return () => {
+      window.removeEventListener('resize', handleResize)
+    }
+  }, [])
+
   const description =
     'Lörem ipsum jere. Intrabel peraktiv pävufåsk läslov pide. Exon prelogi. Någonstansare  begöpp. Homoadoption tesände keck såsom köttrymden. Epigen digon fast svennefiera håven postfaktisk. Atomslöjd defåling nigovena tegt i platt-tv. Sextremism julgranssyndrom. Rit-avdrag fyr, jukanat don. Apfälla menskopp eftersom spetät senessa inklusive mepaktiga. Bloggbävning makroligt spepp gönas. Sitskate epir tidsfönster. Hjärtslagslag defånera. Neck röstsamtal möbelhund. Hexaledes ryggsäcksmodellen hikikomori när stenomiheten täpos. Du kan vara drabbad. '
 
@@ -54,20 +64,25 @@ export const PlaceCard = () => {
 
       <div className={styles.placeCard}>
         <img src={noImage} className={styles.image} />
-        <div>
-          <h3>{place?.name}</h3>
-          <p className={styles.description}>{description}</p>
 
-          <div className={styles.buttons}>
-            <button className={styles.favButton} type='button'>
-              <IoBookmark size={24} />
-              <p>Сохранено</p>
-            </button>
-            <button className={styles.routeButton} onClick={setRoute} type='button'>
-              <IoLocationSharp size={24} />
-              <p>Маршрут</p>
-            </button>
-          </div>
+        <h3>{place?.name}</h3>
+        {windowSize < 425 ? (
+          <ScrollMenu>
+            <p className={styles.description}>{description}</p>
+          </ScrollMenu>
+        ) : (
+          <p className={styles.description}>{description}</p>
+        )}
+
+        <div className={styles.buttons}>
+          <button className={styles.favButton} type='button'>
+            <IoBookmark size={24} className={styles.icon} />
+            <p>Сохранено</p>
+          </button>
+          <button className={styles.routeButton} onClick={setRoute} type='button'>
+            <IoLocationSharp size={24} className={styles.icon} />
+            <p>Маршрут</p>
+          </button>
         </div>
       </div>
     </div>

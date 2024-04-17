@@ -1,6 +1,9 @@
+import unNamed from '@assets/svg/unNamed.svg'
+import { mapIcon } from '@components/MapIcons/Icons'
 import { Marker, Popup } from 'react-leaflet'
 import { MarkerDescription } from './MarkerDescription/MarkerDescription'
-import { MapIcon } from '@components/MapIcons/Icons'
+
+import { categories } from '@constants/categories'
 
 interface IFeaturesPlaces {
   features: Feature[]
@@ -8,13 +11,16 @@ interface IFeaturesPlaces {
 
 export const FeaturesPlaces = ({ features }: IFeaturesPlaces) => {
   function setIcon(arr: string[]) {
-    for (var i = 0; i < MapIcon.length; i++) {
-      let strArr = MapIcon[i].value.split(',')
-      if (strArr.some((item) => arr.includes(item))) {
-        return MapIcon[i].icon
-      }
-    }
-    return MapIcon.at(-1)?.icon
+    let icon = categories.filter((item) => {
+      let values = item.value.split(',')
+      return values.some((value) => {
+        if (arr.includes(value)) {
+          return value
+        }
+      })
+    })
+
+    return icon.length ? mapIcon(icon[0].icon) : mapIcon(unNamed)
   }
 
   return (
